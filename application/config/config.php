@@ -1,6 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+$config['menu_choices'] = array(
+	'menudata' => array(
+			array('name' => 'Comp4711', 'link' => '/home'),
+			array('name' => 'Team Roster', 'link' => '/team'),
+			array('name' => 'Leagues', 'link' => '/leagues'),
+			array('name' => 'About', 'link' => '/about')
+		)
+	);
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
