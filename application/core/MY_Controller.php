@@ -21,7 +21,6 @@ class Application extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->data = array();
-        $this->data['title'] = 'Quotes CMS';    // our default title
         $this->errors = array();
         $this->data['pageTitle'] = 'welcome';   // our default page
         $this->load->library("parser");

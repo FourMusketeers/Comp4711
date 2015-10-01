@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
+	<title>{pageTitle}</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
   <link rel="stylesheet" type"text/css" href="css/app.css">
@@ -14,10 +14,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 <div class="ui large top fixed hidden menu">
   <div class="ui container">
-    <!-- <a class="active item">Home</a>
-    <a class="item">Work</a>
-    <a class="item">Company</a>
-    <a class="item">Careers</a> -->
     {menubar}
     <div class="right menu">
       <div class="item">
