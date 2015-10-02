@@ -1,11 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-
-<html lang="en" style="height:100%; width:100%;">
-
-
-<body style="height:100%; width:100%">
+?>
 
 <div style="height:100%; width:100%; padding:50px;">
 	<h1 style="color:#006699;">ABOUT</h1>
@@ -43,6 +38,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		I enjoy working with MVC!
 	</div>
 </div>
-
-</body>
-</html>
