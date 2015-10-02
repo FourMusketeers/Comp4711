@@ -10,6 +10,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div id="container">
 	<h1>League Page</h1>
+	{teams}
+		name: {name} <br />
+		wins: {wins}<br />
+		losses: {losses}<br />
+	{/teams}
+	<?php //echo $first_name; ?>
 </div>
 
 </body>
