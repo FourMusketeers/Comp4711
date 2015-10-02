@@ -30,7 +30,7 @@ class Team extends Application {
 		$this->load->model('leagues');
 		$this->load->model('roster');
 
-		$team = $this->leagues->getTeamByKey('SEA');
+		$team = $this->leagues->getTeamByKey('NE');
 
 		$this->data['teamname'] = $team['name'];
 		$this->data['roster'] = $this->roster->all();
