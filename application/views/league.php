@@ -1,22 +1,24 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>League</title>
-</head>
 
-<body>
-
-<div id="container">
-	<h1>League Page</h1>
-	{teams}
-		name: {name} <br />
-		wins: {wins}<br />
-		losses: {losses}<br />
-	{/teams}
-	<?php //echo $first_name; ?>
+<div class="ui container">
+    <table class="ui single line table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Wins</th>
+          <th>Losses</th>
+        </tr>
+      </thead>
+      <tbody>
+        {teams}
+            <tr>
+                <td>{name}</td>
+                <td>{wins}</td>
+                <td>{losses}</td>
+            </tr>
+        {/teams}
+      </tbody>
+    </table>
 </div>
-
-</body>
-</html>

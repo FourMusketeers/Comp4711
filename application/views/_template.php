@@ -11,18 +11,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="semantic/dist/semantic.min.js"></script>
   <script src="js/app.js"></script>
 </head>
-<body>
+<body class="appBody">
 <div class="ui large top fixed hidden menu">
   <div class="ui container">
     {menubar}
-    <div class="right menu">
+    <!-- <div class="right menu">
       <div class="item">
         <a class="ui button">Log in</a>
       </div>
       <div class="item">
         <a class="ui primary button">Sign Up</a>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 
