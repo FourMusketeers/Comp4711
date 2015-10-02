@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 
 <div class="ui container">
+  <h1>League</h1>
     <table class="ui single line table">
       <thead>
         <tr>
