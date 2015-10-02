@@ -14,11 +14,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </div>
 
-<div class="ui container">
+<div class="ui container stripe segment">
 	<div class="ui link cards">
   <div class="card">
     <div class="image">
-      <img src="/images/avatar2/large/matthew.png">
+      <img src="img/players/matthew.png">
     </div>
     <div class="content">
       <div class="header">Matt Giampietro</div>
@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
   <div class="card">
     <div class="image">
-      <img src="/images/avatar2/large/molly.png">
+      <img src="img/players/matthew.png">
     </div>
     <div class="content">
       <div class="header">Molly</div>
