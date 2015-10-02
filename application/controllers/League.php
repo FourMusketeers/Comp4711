@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class League extends CI_Controller {
+class League extends Application {
 
 	function __construct()
     {
@@ -25,11 +25,10 @@ class League extends CI_Controller {
 	 */
 	public function index()
 	{
+		$this->data['pagebody'] = 'league';
 		$this->load->library('parser');
 		$this->load->model('teams');
-		$teams = $this->teams->all();
-		$this->parser->parse('league', $teams);
-
-		//$this->load->view('league', $teams[0]);
+		$this->data['teams'] = $this->teams->all();
+		$this->render();
 	}
 }

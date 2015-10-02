@@ -11,22 +11,20 @@
 class Teams extends CI_Model {
 
 	var $data = array(
-		'teams' => array(
-			array(
-				'name' => 'first',
-				'wins' => 1,
-				'losses' => 10
-			),
-			array(
-				'name' => 'second',
-				'wins' => 10,
-				'losses' => 1
-			),
-			array(
-				'name' => 'third',
-				'wins' => 5,
-				'losses' => 2
-			),
+		array(
+			'name' => 'first',
+			'wins' => 1,
+			'losses' => 10
+		),
+		array(
+			'name' => 'second',
+			'wins' => 10,
+			'losses' => 1
+		),
+		array(
+			'name' => 'third',
+			'wins' => 5,
+			'losses' => 2
 		)
 	);
 
