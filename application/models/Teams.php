@@ -16,7 +16,7 @@ class Teams extend CI_Model {
  			'last_name' => 'Morishita', 
  			'number' => '1', 
 	 		'position' => 'Running Back',
- 			'team_name' => 'Four Musketeer',
+ 			'team_name' => 'Four Musketeers',
  			'image'=> '/image.jpg',
  			'link' => '/amorishita'
 		),
@@ -25,7 +25,7 @@ class Teams extend CI_Model {
  			'last_name' => 'Christiansen', 
  			'number' => '2', 
 	 		'position' => 'Quarterback',
- 			'team_name' => 'Four Musketeer',
+ 			'team_name' => 'Four Musketeers',
  			'image'=> '/image.jpg',
  			'link' => '/jchristiansen'
 		),
@@ -34,7 +34,7 @@ class Teams extend CI_Model {
  			'last_name' => 'Ho', 
  			'number' => '3', 
 	 		'position' => 'Center',
- 			'team_name' => 'Four Musketeer',
+ 			'team_name' => 'Four Musketeers',
  			'image'=> '/image.jpg',
  			'link' => '/lho'
 		),
@@ -43,7 +43,7 @@ class Teams extend CI_Model {
  			'last_name' => 'Le', 
  			'number' => '4', 
 	 		'position' => 'Referee',
- 			'team_name' => 'Four Musketeer',
+ 			'team_name' => 'Four Musketeers',
  			'image'=> '/image.jpg',
  			'link' => '/dle'
 		)
