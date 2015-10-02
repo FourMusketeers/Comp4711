@@ -2,14 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 
-<html lang="en" style="height:100%; width:100%;">
-
-
-<body style="height:100%; width:100%">
-
-<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
-<script src="semantic/dist/semantic.min.js"></script>
-
+<div class="ui container">
 <div>
 	<h1>{teamname}</h1>
 
@@ -32,6 +25,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</tbody>
 	</table>
 </div>
-
-</body>
-</html>
+</div>
