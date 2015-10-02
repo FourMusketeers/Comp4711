@@ -20,6 +20,14 @@ class Team extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('team');
+		//$this->load->view('team');
+		
+		$this->load->library('parser');
+		$this->parser->parse('team', $this->data);
+		//$this->data['pagebody'] = 'team'; 
+		//$source = $this->Teams->all();
+		//$this->data = array_merge($this->data, $source);
+		//$this->render();
+		$this->load_view('team');
 	}
 }

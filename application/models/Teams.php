@@ -58,5 +58,4 @@ class Teams extend CI_Model {
 	public function all(){
 		return $this->data;
 	}
-
 }

@@ -7,6 +7,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <body style="height:100%; width:100%">
 
+<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+<script src="semantic/dist/semantic.min.js"></script>
+
 <div style="height:100%; width:100%; padding:50px;">
 	<h1 style="color:#006699;">ABOUT</h1>
 	
