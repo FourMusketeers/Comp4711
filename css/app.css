@@ -7,3 +7,12 @@
   margin-top: 7rem;
   flex: 1;
 }
+.appCenterVertical {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+#appMasthead{
+	margin-top: -7rem;
+	height: 35rem;
+}
