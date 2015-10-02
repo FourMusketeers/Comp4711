@@ -8,44 +8,23 @@
  *
  */
 
-class Teams extend CI_Model {
+class Teams extends CI_Model {
 
 	var $data = array(
-		array(	
-	 		'first_name' => 'Andrew', 
- 			'last_name' => 'Morishita', 
- 			'number' => '1', 
-	 		'position' => 'Running Back',
- 			'team_name' => 'Four Musketeers',
- 			'image'=> '/image.jpg',
- 			'link' => '/amorishita'
+		array(
+			'name' => 'first',
+			'wins' => 1,
+			'losses' => 10
 		),
-		array(	
-	 		'first_name' => 'Jens', 
- 			'last_name' => 'Christiansen', 
- 			'number' => '2', 
-	 		'position' => 'Quarterback',
- 			'team_name' => 'Four Musketeers',
- 			'image'=> '/image.jpg',
- 			'link' => '/jchristiansen'
+		array(
+			'name' => 'second',
+			'wins' => 10,
+			'losses' => 1
 		),
-		array(	
-	 		'first_name' => 'Leon', 
- 			'last_name' => 'Ho', 
- 			'number' => '3', 
-	 		'position' => 'Center',
- 			'team_name' => 'Four Musketeers',
- 			'image'=> '/image.jpg',
- 			'link' => '/lho'
-		),
-		array(	
-	 		'first_name' => 'Duy', 
- 			'last_name' => 'Le', 
- 			'number' => '4', 
-	 		'position' => 'Referee',
- 			'team_name' => 'Four Musketeers',
- 			'image'=> '/image.jpg',
- 			'link' => '/dle'
+		array(
+			'name' => 'third',
+			'wins' => 5,
+			'losses' => 2
 		)
 	);
 

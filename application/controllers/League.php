@@ -1,7 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class League extends CI_Controller {
+class League extends Application {
+
+	function __construct()
+    {
+        parent::__construct();
+    }
 
 	/**
 	 * Index Page for this controller.
@@ -20,6 +25,10 @@ class League extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('league');
+		$this->data['pagebody'] = 'league';
+		$this->load->library('parser');
+		$this->load->model('teams');
+		$this->data['teams'] = $this->teams->all();
+		$this->render();
 	}
 }
