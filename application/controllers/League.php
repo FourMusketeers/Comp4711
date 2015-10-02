@@ -27,8 +27,8 @@ class League extends Application {
 	{
 		$this->data['pagebody'] = 'league';
 		$this->load->library('parser');
-		$this->load->model('teams');
-		$this->data['teams'] = $this->teams->all();
+		$this->load->model('leagues');
+		$this->data['teams'] = $this->leagues->all();
 		$this->render();
 	}
 }

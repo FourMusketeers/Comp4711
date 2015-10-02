@@ -10,12 +10,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div id="container">
 	<h1>League Page</h1>
-	{teams}
-		name: {name} <br />
-		wins: {wins}<br />
-		losses: {losses}<br />
-	{/teams}
-	<?php //echo $first_name; ?>
+	<table class="ui single line table">
+		<thead>
+			<tr>
+				<th>Team Name</th>
+				<th>Wins</th>
+				<th>Losses</th>
+				<th>Ties</th>
+			</tr>
+		</thead>
+		<tbody>	
+			{teams}
+			<tr>
+				<td>{name}</td>
+				<td>{win}</td>
+				<td>{loss}</td>
+				<td>{tie}</td>
+			</tr>
+			{/teams}
+		</tbody>
+	</table>
 </div>
 
 </body>

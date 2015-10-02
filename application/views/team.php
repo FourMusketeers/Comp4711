@@ -11,26 +11,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="semantic/dist/semantic.min.js"></script>
 
 <div>
-	<h1>TEAM</h1>
+	<h1>{teamname}</h1>
 
 	<table class="ui single line table">
 		<thead>
 			<tr>
 				<th>Name</th>
-				<th>Wins</th>
-				<th>Losses</th>
+				<th>Grade</th>
+				<th>Position</th>
 			</tr>
 		</thead>
 		<tbody>
-			{teams}
+			{roster}
 			<tr>
-				<td>{name}</td>
-				<td>{wins}</td>
-				<td>{losses}</td>
+				<td>{first_name} {last_name}</td>
+				<td>{grade}</td>
+				<td>{position}</td>
 			</tr>
-			{/teams}
-			<?php //echo $first_name; ?>
-			
+			{/roster}
 		</tbody>
 	</table>
 </div>
