@@ -16,16 +16,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="ui container stripe segment">
 	<div class="ui link cards">
-  {teams}
+  {roster}
   	<div class="card">
     <div class="image">
       <img src="img/players/matthew.png">
     </div>
     <div class="content">
-      <div class="header">{name}</div>
+      <div class="header">{first_name} {last_name}</div>
       <div class="meta">
-        <a>Wins {wins}</a>
-        <a>Losses {losses}</a>
+        <a>Grade {grade}</a>
+        <a>Position {position}</a>
       </div>
       <div class="description">
         Placeholder description
@@ -37,6 +37,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </span>
     </div>
   </div>
-  {/teams}
+  {/roster}
 </div>
 </div>

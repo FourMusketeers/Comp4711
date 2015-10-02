@@ -2,38 +2,27 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 
-<html lang="en" style="height:100%; width:100%;">
-
-
-<body style="height:100%; width:100%">
-
-<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
-<script src="semantic/dist/semantic.min.js"></script>
-
+<div class="ui container">
 <div>
-	<h1>TEAM</h1>
+	<h1>{teamname}</h1>
 
 	<table class="ui single line table">
 		<thead>
 			<tr>
 				<th>Name</th>
-				<th>Wins</th>
-				<th>Losses</th>
+				<th>Grade</th>
+				<th>Position</th>
 			</tr>
 		</thead>
 		<tbody>
-			{teams}
+			{roster}
 			<tr>
-				<td>{name}</td>
-				<td>{wins}</td>
-				<td>{losses}</td>
+				<td>{first_name} {last_name}</td>
+				<td>{grade}</td>
+				<td>{position}</td>
 			</tr>
-			{/teams}
-			<?php //echo $first_name; ?>
-			
+			{/roster}
 		</tbody>
 	</table>
 </div>
-
-</body>
-</html>
+</div>
