@@ -27,8 +27,13 @@ class Team extends Application {
 	{
 		$this->data['pagebody'] = 'team';
 		$this->load->library('parser');
-		$this->load->model('teams');
-		$this->data['teams'] = $this->teams->all();
+		$this->load->model('leagues');
+		$this->load->model('roster');
+
+		$team = $this->leagues->getTeamByKey('SEA');
+
+		$this->data['teamname'] = $team['name'];
+		$this->data['roster'] = $this->roster->all();
 		$this->render();
 	}
 }

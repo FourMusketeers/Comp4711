@@ -5,7 +5,7 @@ $config['menu_choices'] = array(
 	'menudata' => array(
 			array('name' => 'Comp4711', 'link' => '/'),
 			array('name' => 'Team Roster', 'link' => '/team'),
-			array('name' => 'Leagues', 'link' => '/leagues'),
+			array('name' => 'Leagues', 'link' => '/league'),
 			array('name' => 'About', 'link' => '/about')
 		)
 	);
