@@ -3,6 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Team extends Application {
 
+	function __construct()
+    {
+        parent::__construct();
+    }
+
 	/**
 	 * Index Page for this controller.
 	 *
@@ -20,15 +25,10 @@ class Team extends Application {
 	 */
 	public function index()
 	{
-		//$this->load->view('team');
-		
-		//$this->load->library('parser');
-		//$this->parser->parse('team', $this->data);
-		//$this->data['pagebody'] = 'team'; 
-		//$source = $this->Teams->all();
-		//$this->data = array_merge($this->data, $source);
-		//$this->render();
-		
+		$this->data['pagebody'] = 'team';
+		$this->load->library('parser');
+		$this->load->model('teams');
+		$this->data['teams'] = $this->teams->all();
 		$this->render();
 	}
 }
