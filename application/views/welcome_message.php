@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   {roster}
   	<div class="card">
     <div class="image">
-      <img src="img/players/matthew.png">
+      <img src="img/players/image.png">
     </div>
     <div class="content">
       <div class="header">{first_name} {last_name}</div>
