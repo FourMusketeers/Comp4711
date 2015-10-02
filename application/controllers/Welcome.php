@@ -21,6 +21,8 @@ class Welcome extends Application {
 	public function index()
 	{
 		$this->data['pagebody'] = 'welcome_message';
+		$this->load->model('teams');
+		$this->data['teams'] = $this->teams->all();
 		$this->render();
 	}
 }
