@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 
 <div class="ui container stripe segment">
-	<div class="ui link cards">
+	<div id="appRosterCards" class="ui link cards">
   {roster}
   	<div class="card">
     <div class="image">

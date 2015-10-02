@@ -11,6 +11,10 @@
 	top: 50%;
 	transform: translateY(-50%);
 }
+#appRosterCards {
+	display: flex;
+	justify-content: space-around;
+}
 #appMasthead{
 	margin-top: -7rem;
 	height: 35rem;
