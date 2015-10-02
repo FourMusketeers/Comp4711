@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Team extends CI_Controller {
+class Team extends Application {
 
 	/**
 	 * Index Page for this controller.
@@ -22,12 +22,13 @@ class Team extends CI_Controller {
 	{
 		//$this->load->view('team');
 		
-		$this->load->library('parser');
-		$this->parser->parse('team', $this->data);
+		//$this->load->library('parser');
+		//$this->parser->parse('team', $this->data);
 		//$this->data['pagebody'] = 'team'; 
 		//$source = $this->Teams->all();
 		//$this->data = array_merge($this->data, $source);
 		//$this->render();
-		$this->load_view('team');
+		
+		$this->render();
 	}
 }
