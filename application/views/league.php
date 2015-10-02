@@ -9,14 +9,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <th>Name</th>
           <th>Wins</th>
           <th>Losses</th>
+          <th>Ties</th>
         </tr>
       </thead>
       <tbody>
         {teams}
             <tr>
                 <td>{name}</td>
-                <td>{wins}</td>
-                <td>{losses}</td>
+                <td>{win}</td>
+                <td>{loss}</td>
+                <td>{tie}</td>
             </tr>
         {/teams}
       </tbody>
