@@ -20,8 +20,8 @@ class Welcome extends Application {
 	 */
 	public function index()
 	{
-		$this->data['pagebody'] = 'welcome_message';
-		$this->load->model('Roster');
+		$this->data['pagebody'] = 'welcome_message'; //Load the view
+		$this->load->model('Roster'); //Load the model
 		$this->data['roster'] = $this->Roster->all();
 		$this->render();
 	}
