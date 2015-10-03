@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/*
+	Menu options and their routes for the top menu bar
+ */
 $config['menu_choices'] = array(
 	'menudata' => array(
 			array('name' => 'Comp4711', 'link' => '/'),
