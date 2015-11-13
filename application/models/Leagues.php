@@ -8,7 +8,7 @@
  *
  */
 
-class Leagues extends CI_Model {
+class Leagues extends MY_Model {
 
 	var $data = array(
 		array(	
@@ -95,9 +95,11 @@ class Leagues extends CI_Model {
 	);
 
 	// Constructor
-	public function __construct(){
-		parent::__construct();
-	}
+	public function __construct() {
+       parent::__construct('League', 'TeamName'); 
+       $all = parent::all();
+       //echo var_dump(all);
+    }
 
 	// Retrieve all of the teams
 	public function all(){
