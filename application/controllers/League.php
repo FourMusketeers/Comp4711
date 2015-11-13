@@ -51,6 +51,28 @@ class League extends Application {
 		$this->data['showRight'] = $page >= $pages ? "disabled" : "";
 		$this->data["previousPage"] = $page ==1 ? "" : "/League/page/"+$page - 1;
 		$this->data['nextPage'] = $page >= $pages ? "" : "/League/page/"+$page+1;
+		
+		
+		
+		
+		/* TESTING */
+		// $newdata = array(
+			// 'togglegallery' => false,
+			// 'rosterorder' => false,
+			// 'editing' => false,
+		// );
+		
+		$this->session->set_userdata('togglegallery', false);
+		if (isset($_SESSION['togglegallery'])) {
+			echo ("HELLLOOO");
+		} else {
+			
+			echo ("FAIILED");
+		}
+		
+		/* END OF SESSION TEST */
+		
+		
 		$this->render();
 	}
 	private function buildPagination($pages) {

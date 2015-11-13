@@ -18,9 +18,9 @@
       <tbody>
          {teams}
          <tr>
-            <td>
-               <img src="/img/logos/{Image}" alt="/img/logos/{Image}">
-               <div>{TeamName}</div>
+            <td class="team-section">
+               <img class="team-logo" src="/img/logos/{Image}" alt="/img/logos/{Image}">
+               <div class="team-name">{TeamName}</div>
             </td>
             <td>{Win}</td>
             <td>{Loss}</td>
