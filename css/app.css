@@ -26,3 +26,17 @@
 	align-content: space-between;
 	min-height: 100vh;
 }
+
+.team-logo {
+	float: left;
+}
+.team-name {
+	display: inline-block;
+	margin-top: 40px;
+	margin-left: 20px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.team-section {
+	height: 100px;
+}
