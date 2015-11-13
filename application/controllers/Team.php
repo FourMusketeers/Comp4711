@@ -29,8 +29,29 @@ class Team extends Application {
 		$this->load->library('parser');
 		$this->load->model('roster');
 		$this->data["roster"] = $this->roster->paginate(1);
+		$pages = ceil($this->roster->size() / 12);
+		$this->data['pages'] = $this->buildPagination($pages);
+		$this->data['showLeft'] = "disabled";
+		$this->data['showRight'] = $pages == 1 ? "disabled" : "";
+		$this->data['previousPage'] = "";
+		$this->data['nextPage'] = "/team/page/" + 2;
 		$this->render();
 	}
+	public function page($page)
+	{
+		$this->data['pagebody'] = 'Team';
+		$this->load->library('parser');
+		$this->load->model('roster');
+		$this->data["roster"] = $this->roster->paginate($page);
+		$pages = ceil($this->roster->size() / 12);
+		$this->data['pages'] = $this->buildPagination($pages);
+		$this->data['showLeft'] = $page ==1 ? "disabled" : "";
+		$this->data['showRight'] = $page >= $pages ? "disabled" : "";
+		$this->data["previousPage"] = $page ==1 ? "" : "/team/page/"+$page - 1;
+		$this->data['nextPage'] = $page >= $pages ? "" : "/team/page/"+$page+1;
+		$this->render();
+	}
+
 	private function buildPagination($pages) {
 		$result = array();
 		for($i = 0; $i < $pages; $i++) {
