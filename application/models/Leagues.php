@@ -96,15 +96,13 @@ class Leagues extends MY_Model {
 
 	// Constructor
 	public function __construct() {
-       parent::__construct('League', 'TeamName'); 
-       $all = parent::all();
-       //echo var_dump(all);
+       parent::__construct('Leagues', 'TeamName'); 
     }
 
-	// Retrieve all of the teams
-	public function all(){
-		return $this->data;
-	}
+	// // Retrieve all of the teams
+	// public function all(){
+	// 	return $this->data;
+	// }
 
 	// Retrieve single team by team key
 	public function getTeamByKey($key){

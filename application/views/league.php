@@ -16,10 +16,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <tbody>
         {teams}
             <tr>
-                <td>{name}</td>
-                <td>{win}</td>
-                <td>{loss}</td>
-                <td>{tie}</td>
+                <td>{TeamName}</td>
+                <td>{Win}</td>
+                <td>{Loss}</td>
+                <td>{Tie}</td>
             </tr>
         {/teams}
       </tbody>
