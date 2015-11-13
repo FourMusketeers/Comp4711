@@ -104,6 +104,7 @@ interface Active_record {
      * @return mixed The selected records, as an array of records
      */
     function some($what, $which);
+
 }
 
 /**
@@ -220,6 +221,12 @@ class MY_Model extends CI_Model implements Active_Record {
         if ($query->num_rows() < 1)
             return false;
         return true;
+    }
+    function pageinate($page = 1) {
+        $page--;
+        $this->db->limit(12)->offset($page * 12);
+        $query = $this->db->get($this->_tableName);
+        return $query->result();
     }
 
 //---------------------------------------------------------------------------
@@ -351,6 +358,7 @@ class MY_Model2 extends MY_Model {
         }
         return $highest;
     }
+
 
 //---------------------------------------------------------------------------
 //  Aggregate functions
