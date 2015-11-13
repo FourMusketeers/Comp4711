@@ -222,7 +222,7 @@ class MY_Model extends CI_Model implements Active_Record {
             return false;
         return true;
     }
-    function pageinate($page = 1) {
+    function paginate($page = 1) {
         $page--;
         $this->db->limit(12)->offset($page * 12);
         $query = $this->db->get($this->_tableName);

@@ -28,7 +28,7 @@ class League extends Application {
 		$this->data['pagebody'] = 'league';
 		$this->load->model('leagues');
 		//$this->data['teams'] = $this->leagues->all();
-		$this->data['teams'] = $this->leagues->pageinate(1);
+		$this->data['teams'] = $this->leagues->paginate(1);
 
 		$pages = ceil($this->leagues->size() / 12);
 		
@@ -44,7 +44,7 @@ class League extends Application {
 		$this->data['pagebody'] = 'league';
 		$this->load->library('parser');
 		$this->load->model('leagues');
-		$this->data['teams'] = $this->leagues->pageinate($page);
+		$this->data['teams'] = $this->leagues->paginate($page);
 		$pages = ceil($this->leagues->size() / 12);
 		$this->data['pages'] = $this->buildPagination($pages);
 		$this->data['showLeft'] = $page ==1 ? "disabled" : "";

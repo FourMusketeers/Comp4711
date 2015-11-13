@@ -25,15 +25,20 @@ class Team extends Application {
 	 */
 	public function index()
 	{
-		$this->data['pagebody'] = 'team';
+		$this->data['pagebody'] = 'Team';
 		$this->load->library('parser');
-		$this->load->model('leagues');
 		$this->load->model('roster');
-
-		$team = $this->leagues->getTeamByKey('NE');
-
-		$this->data['teamname'] = $team['name'];
-		$this->data['roster'] = $this->roster->all();
+		$this->data["roster"] = $this->roster->paginate(1);
 		$this->render();
+	}
+	private function buildPagination($pages) {
+		$result = array();
+		for($i = 0; $i < $pages; $i++) {
+			$temp = array(
+				"pageNum" => $i + 1
+			);
+			array_push($result, $temp);
+		}
+		return $result;
 	}
 }
