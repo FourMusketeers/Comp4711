@@ -40,7 +40,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <h4 class="ui inverted header">About</h4>
             <div class="ui inverted link list">
               <a href="#" class="item">Leon Ho</a>
-              <a href="#" class="item">Jens Christiansen</a>
               <a href="#" class="item">Duy Le</a>
               <a href="#" class="item">Andrew Morishita</a>
             </div>
