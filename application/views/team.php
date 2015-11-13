@@ -1,17 +1,20 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+?>
 
 <div class="ui container">
 <div>
 	<h1>New England Patriots</h1>
-
+    <div class="ui toggle checkbox">
+    <input type="checkbox" name="public" onchange="window.location.href='/team/page/2'">
+    <label>View In Gallery Mode</label>
+  </div>
 	<table class="ui single line table">
 		<thead>
 			<tr>
-				<th>Name</th>
-				<th>Number</th>
-				<th>Position</th>
+				<th><a href="/team/page/{pageNum}/Name">Name <i class="sort icon"></i></a></th>
+				<th><a href="">Number <i class="sort icon"></i></a></th>
+				<th><a href="">Position <i class="sort icon"></i></a></th>
 			</tr>
 		</thead>
 		<tbody>
