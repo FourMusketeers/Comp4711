@@ -37,9 +37,17 @@ class Team extends Application {
 		$this->data['pageNum'] = 1;
 		$this->render();
 	}
-	public function page($page)
+	public function page($page, $mode = null)
 	{
-		$this->data['pagebody'] = 'Team';
+		//echo $_SESSION['teamMode'];
+		echo isset($mode);
+		if(isset($mode)) {
+			$this->session->set_userdata('teamMode', $mode);
+		} else if(!isset($_SESSION['teamMode'])){
+			$this->session->set_userdata('teamMode', "team");
+		} 
+		//echo $_SESSION['teamMode'];
+		$this->data['pagebody'] = $_SESSION['teamMode'];
 		$this->load->model('roster');
 		$this->data["roster"] = $this->roster->paginate($page);
 		$pages = ceil($this->roster->size() / 12);

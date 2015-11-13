@@ -64,10 +64,10 @@ class League extends Application {
 		
 		$this->session->set_userdata('togglegallery', false);
 		if (isset($_SESSION['togglegallery'])) {
-			echo ("HELLLOOO");
+			//echo ("HELLLOOO");
 		} else {
 			
-			echo ("FAIILED");
+			//echo ("FAIILED");
 		}
 		
 		/* END OF SESSION TEST */
