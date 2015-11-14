@@ -24,8 +24,13 @@ class Team extends Application {
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index()
-	{
-		$this->data['pagebody'] = 'Team';	
+	{	
+		if(!isset($_SESSION['teamMode'])) {
+			$this->layout('Team');
+		}
+		
+		$this->data['pagebody'] = $_SESSION['teamMode'];
+		
 		$this->load->model('roster');
 		$this->data["roster"] = $this->roster->paginate(1);
 		$pages = ceil($this->roster->size() / 12);
@@ -40,18 +45,27 @@ class Team extends Application {
 	public function layout($page) {
 		$this->session->set_userdata('teamMode', $page);
 	}
-	
-	public function page($page, $mode = null)
-	{	
-		if (!isset($mode)) {
-			$this->session->set_userdata('teamMode', 'team');
+	public function pagelayout() {
+		if($_SESSION['teamMode'] == 'Team') {
+			$this->layout('teamGallery');
 		} else {
-			$this->session->set_userdata('teamMode', 'teamGallery');
+			$this->layout('Team');
 		}
+		$this->data['pagebody'] = $_SESSION['teamMode'];
 		
-		//$this->session->set_userdata('teamMode', 'teamGallery');
-		
-		
+		$this->load->model('roster');
+		$this->data["roster"] = $this->roster->paginate(1);
+		$pages = ceil($this->roster->size() / 12);
+		$this->data['pages'] = $this->buildPagination($pages);
+		$this->data['showLeft'] = "disabled";
+		$this->data['showRight'] = $pages == 1 ? "disabled" : "";
+		$this->data['previousPage'] = "";
+		$this->data['nextPage'] = "/team/page/" + 2;
+		$this->data['pageNum'] = 1;
+		$this->render();
+	}
+	public function page($page)
+	{	
 		$this->data['pagebody'] = $_SESSION['teamMode'];
 		$this->load->model('roster');
 		$this->data["roster"] = $this->roster->paginate($page);
