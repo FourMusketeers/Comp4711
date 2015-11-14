@@ -40,3 +40,8 @@
 .team-section {
 	height: 100px;
 }
+.appTableHover:hover {
+	background-color: #0066cc;
+	color: white;
+	cursor: pointer;
+}

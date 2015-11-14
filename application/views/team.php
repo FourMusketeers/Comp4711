@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</thead>
 		<tbody>
 			{roster}
-			<tr>
+			<tr class="appTableHover"onclick="window.location.href='/SinglePlayer/index/{PlayerID}'">
 				<td>{PlayerName}</td>
 				<td>{Num}</td>
 				<td>{Pos}</td>
