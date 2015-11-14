@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class SinglePlayer extends Application {
+class Edit extends Application {
 
 	function __construct()
     {
@@ -23,15 +23,18 @@ class SinglePlayer extends Application {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index($playerID)
+	public function index()
 	{
 		if(!isset($_SESSION['editMode'])) {
-			$this->session->set_userdata('editMode', "singleView");
+			$this->session->set_userdata('editMode', "singleViewEdit");
+		} else {
+			if($_SESSION['editMode'] == "singleViewEdit") {
+				$this->session->set_userdata('editMode', "singleView");
+			} else {
+				$this->session->set_userdata('editMode', "singleViewEdit");
+			}
 		}
-		$this->data['pagebody'] = $_SESSION['editMode'];
-		$this->load->model('Roster');
-		$this->data = array_merge($this->data, (array)$this->Roster->get($playerID));
-
-		$this->render();
+		header('Location: ' . $_SERVER["HTTP_REFERER"] );
+		exit;
 	}
 }

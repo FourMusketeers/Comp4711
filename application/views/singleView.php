@@ -6,7 +6,7 @@
    <h1>{PlayerName}</h1>
    <div class="ui two column stackable grid container">
       <div class="column">
-      <img src="/img/players/{Image}" alt="Image of {PlayerName}"/>
+      <img src="/img/players/{Image}" alt="Image of {PlayerName}" width="200px" height="200px"/>
       <p>Position: {Pos}</p>
       <p>Player Number: {Num}</p>
       </div>
