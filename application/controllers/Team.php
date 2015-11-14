@@ -25,7 +25,7 @@ class Team extends Application {
 	 */
 	public function index()
 	{
-		$this->data['pagebody'] = 'Team';
+		$this->data['pagebody'] = 'Team';	
 		$this->load->model('roster');
 		$this->data["roster"] = $this->roster->paginate(1);
 		$pages = ceil($this->roster->size() / 12);
@@ -37,16 +37,21 @@ class Team extends Application {
 		$this->data['pageNum'] = 1;
 		$this->render();
 	}
+	public function layout($page) {
+		$this->session->set_userdata('teamMode', $page);
+	}
+	
 	public function page($page, $mode = null)
-	{
-		//echo $_SESSION['teamMode'];
-		echo isset($mode);
-		if(isset($mode)) {
-			$this->session->set_userdata('teamMode', $mode);
-		} else if(!isset($_SESSION['teamMode'])){
-			$this->session->set_userdata('teamMode', "team");
-		} 
-		//echo $_SESSION['teamMode'];
+	{	
+		if (!isset($mode)) {
+			$this->session->set_userdata('teamMode', 'team');
+		} else {
+			$this->session->set_userdata('teamMode', 'teamGallery');
+		}
+		
+		//$this->session->set_userdata('teamMode', 'teamGallery');
+		
+		
 		$this->data['pagebody'] = $_SESSION['teamMode'];
 		$this->load->model('roster');
 		$this->data["roster"] = $this->roster->paginate($page);
