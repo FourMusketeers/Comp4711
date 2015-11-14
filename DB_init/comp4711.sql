@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 13, 2015 at 03:12 AM
+-- Generation Time: Nov 14, 2015 at 01:35 AM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -23,10 +23,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `League`
+-- Table structure for table `Leagues`
 --
 
-CREATE TABLE IF NOT EXISTS `League` (
+CREATE TABLE IF NOT EXISTS `Leagues` (
   `TeamName` varchar(50) NOT NULL,
   `Win` varchar(1) DEFAULT NULL,
   `Loss` varchar(1) DEFAULT NULL,
@@ -49,10 +49,10 @@ CREATE TABLE IF NOT EXISTS `League` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `League`
+-- Dumping data for table `Leagues`
 --
 
-INSERT INTO `League` (`TeamName`, `Win`, `Loss`, `Tie`, `Pct`, `PF`, `PA`, `NetPts`, `TD`, `Home`, `Road`, `Division`, `Pct2`, `Conf`, `Pct3`, `Non-Conf`, `Streak`, `Last5`, `Image`) VALUES
+INSERT INTO `Leagues` (`TeamName`, `Win`, `Loss`, `Tie`, `Pct`, `PF`, `PA`, `NetPts`, `TD`, `Home`, `Road`, `Division`, `Pct2`, `Conf`, `Pct3`, `Non-Conf`, `Streak`, `Last5`, `Image`) VALUES
 ('Arizona Cardinals', '6', '2', '0', '0.75', '263', '153', '110', '32', '3-1', '3-1', '1-1', '0.5', '4-1', '0.8', '2-1', '2W', '3-2', 'ARI_logo-80x90.gif'),
 ('Atlanta Falcons', '6', '3', '0', '0.667', '229', '190', '39', '27', '3-1', '3-2', '0-2', '0', '4-3', '0.571', '2-0', '2L', '2-3', 'ATL_logo-80x90.gif'),
 ('Baltimore Ravens', '2', '6', '0', '0.25', '190', '214', '-24', '19', '1-2', '1-4', '1-2', '0.333', '2-4', '0.333', '0-2', '1W', '2-3', 'BAL_logo-80x90.gif'),
@@ -97,48 +97,51 @@ CREATE TABLE IF NOT EXISTS `Players` (
   `Pos` varchar(25) NOT NULL,
   `Num` varchar(25) DEFAULT NULL,
   `PlayerName` varchar(25) NOT NULL,
-  `Image` varchar(50) NOT NULL
+  `Image` varchar(50) NOT NULL,
+  `Age` int(11) NOT NULL,
+  `College` varchar(30) NOT NULL,
+  `Weight` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `Players`
 --
 
-INSERT INTO `Players` (`PlayerID`, `Pos`, `Num`, `PlayerName`, `Image`) VALUES
-(2, 'P', '6', 'Allen, Ryan', 'ALL644159.png'),
-(3, 'WR', '80', 'Amendola, Danny', 'AME359918.png'),
-(4, 'C', '60', 'Andrews, David', 'AND652945.png'),
-(5, 'RB', '29', 'Blount, LeGarrette', 'BLO626278.png'),
-(6, 'RB', '38', 'Bolden, Brandon', 'BOL167697.png'),
-(7, 'OLB', '58', 'Bostic, Jon', 'BOS528427.png'),
-(8, 'WR', '82', 'Boyce, Josh', 'BOY049190.png'),
-(9, 'QB', '12', 'Brady, Tom', 'BRA371156.png'),
-(10, 'DT', '97', 'Branch, Alan', 'BRA489251.png'),
-(11, 'DT', '90', 'Brown, Malcom', 'BRO550723.png'),
-(12, 'CB', '25', 'Brown, Tarell', 'BRO695589.png'),
-(13, 'CB', '21', 'Butler, Malcolm', 'BUT474917.png'),
-(14, 'OT', '61', 'Cannon, Marcus', 'CAN637002.png'),
-(15, 'LS', '49', 'Cardona, Joe', 'CAR054160.png'),
-(16, 'TE', '88', 'Chandler, Scott', 'CHA313999.png'),
-(17, 'SS', '23', 'Chung, Patrick', 'CHU126772.png'),
-(18, 'CB', '22', 'Coleman, Justin', 'COL294032.png'),
-(19, 'OLB', '91', 'Collins, Jamie', 'COL607549.png'),
-(20, 'TE', '86', 'Derby, A.J.', 'DER139014.png'),
-(21, 'FB', '46', 'Develin, James', 'DEV145356.png'),
-(22, 'WR', '17', 'Dobson, Aaron', 'DOB744752.png'),
-(23, 'DT', '99', 'Easley, Dominique', 'EAS071808.png'),
-(24, 'DB', '43', 'Ebner, Nate', 'EBN177981.png'),
-(25, 'WR', '11', 'Edelman, Julian', 'EDE425791.png'),
-(26, 'OT', '71', 'Fleming, Cameron', 'FLE157731.png');
+INSERT INTO `Players` (`PlayerID`, `Pos`, `Num`, `PlayerName`, `Image`, `Age`, `College`, `Weight`) VALUES
+(2, 'P', '6', 'Allen, Ryan', 'ALL644159.png', 25, 'Lousiana Tech', 220),
+(3, 'WR', '80', 'Amendola, Danny', 'AME359918.png', 30, 'Texas tech', 190),
+(4, 'C', '60', 'Andrews, David', 'AND652945.png', 23, 'Georgia', 195),
+(5, 'RB', '29', 'Blount, LeGarrette', 'BLO626278.png', 28, 'Oregon', 250),
+(6, 'RB', '38', 'Bolden, Brandon', 'BOL167697.png', 25, 'Mississippi', 220),
+(7, 'OLB', '58', 'Bostic, Jon', 'BOS528427.png', 24, 'Florida', 245),
+(8, 'WR', '82', 'Boyce, Josh', 'BOY049190.png', 38, 'Michigan', 225),
+(9, 'QB', '12', 'Brady, Tom', 'BRA371156.png', 24, 'Michigan', 225),
+(10, 'DT', '97', 'Branch, Alan', 'BRA489251.png', 38, 'Michigan', 350),
+(11, 'DT', '90', 'Brown, Malcom', 'BRO550723.png', 21, 'Texas', 320),
+(12, 'CB', '25', 'Brown, Tarell', 'BRO695589.png', 30, 'Texas', 190),
+(13, 'CB', '21', 'Butler, Malcolm', 'BUT474917.png', 24, 'West Alabama', 190),
+(14, 'OT', '61', 'Cannon, Marcus', 'CAN637002.png', 27, 'Texas Christian', 335),
+(15, 'LS', '49', 'Cardona, Joe', 'CAR054160.png', 23, 'Navy', 245),
+(16, 'TE', '88', 'Chandler, Scott', 'CHA313999.png', 30, 'Iowa', 260),
+(17, 'SS', '23', 'Chung, Patrick', 'CHU126772.png', 28, 'Oregon', 215),
+(18, 'CB', '22', 'Coleman, Justin', 'COL294032.png', 22, 'Tennessee', 188),
+(19, 'OLB', '91', 'Collins, Jamie', 'COL607549.png', 26, 'Southern Mississppi', 250),
+(20, 'TE', '86', 'Derby, A.J.', 'DER139014.png', 24, 'Arkansas', 255),
+(21, 'FB', '46', 'Develin, James', 'DEV145356.png', 27, 'Brown', 255),
+(22, 'WR', '17', 'Dobson, Aaron', 'DOB744752.png', 24, 'Marshall', 205),
+(23, 'DT', '99', 'Easley, Dominique', 'EAS071808.png', 23, 'Florida', 285),
+(24, 'DB', '43', 'Ebner, Nate', 'EBN177981.png', 26, 'Ohio State', 220),
+(25, 'WR', '11', 'Edelman, Julian', 'EDE425791.png', 29, 'Kent State', 200),
+(26, 'OT', '71', 'Fleming, Cameron', 'FLE157731.png', 23, 'Standford', 320);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `League`
+-- Indexes for table `Leagues`
 --
-ALTER TABLE `League`
+ALTER TABLE `Leagues`
   ADD PRIMARY KEY (`TeamName`);
 
 --
