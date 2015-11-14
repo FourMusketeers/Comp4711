@@ -34,4 +34,13 @@ class SinglePlayer extends Application {
 
 		$this->render();
 	}
+	public function createNew()
+	{
+		$this->data['pagebody'] = 'singleViewEdit';
+		$this->load->model('Roster');
+		$data = $this->Roster->create();
+		$data->Image = rand(10,100) . ".png";
+		$this->data = array_merge($this->data, (array)$data);
+		$this->render();
+	}
 }

@@ -17,23 +17,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="ui container stripe segment">
 	<div id="appRosterCards" class="ui link cards">
   {roster}
-  	<div class="card">
+  	<div class="card" onclick="window.location.href='/SinglePlayer/index/{PlayerID}'">
     <div class="image">
-      <img src="img/players/image.png">
+      <img src="img/players/{Image}">
     </div>
     <div class="content">
-      <div class="header">{first_name} {last_name}</div>
+      <div class="header">{PlayerName}</div>
       <div class="meta">
-        <a>Grade {grade}</a>
-        <a>Position {position}</a>
-      </div>
-      <div class="description">
-        Placeholder description
+        <a>Number {Num}</a>
+        <a>Position {Pos}</a>
       </div>
     </div>
     <div class="extra content">
       <span class="right floated">
-        Joined in 2013
+        {College}
       </span>
     </div>
   </div>

@@ -28,18 +28,13 @@ class Team extends Application {
 		if(!isset($_SESSION['teamMode'])) {
 			$this->layout('Team');
 		}
-		
 		$this->data['pagebody'] = $_SESSION['teamMode'];
 		
 		$this->load->model('roster');
 		$this->data["roster"] = $this->roster->paginate(1);
 		$pages = ceil($this->roster->size() / 12);
-		$this->data['pages'] = $this->buildPagination($pages);
-		$this->data['showLeft'] = "disabled";
-		$this->data['showRight'] = $pages == 1 ? "disabled" : "";
-		$this->data['previousPage'] = "";
-		$this->data['nextPage'] = "/team/page/" + 2;
-		$this->data['pageNum'] = 1;
+		$this->setPagination($pages, 1);
+		$this->buildMenu();
 		$this->render();
 	}
 	public function layout($page) {
@@ -62,6 +57,7 @@ class Team extends Application {
 		$this->data['previousPage'] = "";
 		$this->data['nextPage'] = "/team/page/" + 2;
 		$this->data['pageNum'] = 1;
+		$this->buildMenu();
 		$this->render();
 	}
 	public function page($page)
@@ -71,7 +67,15 @@ class Team extends Application {
 		$this->data["roster"] = $this->roster->paginate($page);
 		$pages = ceil($this->roster->size() / 12);
 		$this->setPagination($pages, $page);
+		$this->buildMenu();
 		$this->render();
+	}
+	private function buildMenu() {
+		if(isset($_SESSION['editMode']) && $_SESSION['editMode'] == "singleViewEdit") {
+			$this->data["options"] = $this->load->view('addPlayer', "", true);
+		} else {
+			$this->data["options"] = "";
+		}
 	}
 	private function buildPagination($pages) {
 		$result = array();

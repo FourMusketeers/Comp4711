@@ -32,6 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <div class="ui small button">
                 <a href="/team/">Page 1</a>
               </div>
+              {options}
             </th>
             <th colspan="5">
                <div class="ui right floated menu">

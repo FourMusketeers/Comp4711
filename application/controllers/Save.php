@@ -7,7 +7,7 @@ class Save extends Application {
 			parent::__construct();
 			$this->load->helper(array('form', 'url'));
 	}
-	public function index($ID)
+	public function index($ID = null)
 	{
 		$config['upload_path']          = './img/players';
 		$config['allowed_types']        = 'gif|jpg|png';
@@ -34,7 +34,9 @@ class Save extends Application {
 		}
 		$this->load->model('Roster');
 		$record = $this->Roster->create();
-		$record->PlayerID = $ID;
+		if(isset($ID)) {
+			$record->PlayerID = $ID;	
+		}
 		$record->PlayerName = $this->input->post("playerName");
 		$record->Pos = $this->input->post("pos");
 		$record->Num = $this->input->post("num");
@@ -42,8 +44,13 @@ class Save extends Application {
 		$record->Age = $this->input->post("age");
 		$record->Weight = $this->input->post("weight");
 		$record->College = $this->input->post("college");
-		$this->Roster->update($record);
-		header('Location: ' . $_SERVER["HTTP_REFERER"] );
+		if($ID == null) {
+			$this->Roster->add($record);
+			redirect('/Team');	
+		} else {
+			$this->Roster->update($record);	
+			header('Location: ' . $_SERVER["HTTP_REFERER"] );
+		}
 	}
 	public function delete($ID) {
 		$this->load->helper('url');
