@@ -56,6 +56,10 @@ class Team extends Application {
 		$this->data['showRight'] = $pages == 1 ? "disabled" : "";
 		$this->data['previousPage'] = "";
 		$this->data['nextPage'] = "/team/page/" + 2;
+		$this->data['firstPage'] = "";
+		$this->data['lastPage'] = "/team/page/" + $pages;
+		$this->data['goFirst'] = "disabled";
+		$this->data['goLast'] = $pages == 1 ? "disabled" : "";
 		$this->data['pageNum'] = 1;
 		$this->buildMenu();
 		$this->render();
@@ -93,5 +97,10 @@ class Team extends Application {
 		$this->data['showRight'] = $page >= $pages ? "disabled" : "";
 		$this->data["previousPage"] = $page ==1 ? "" : "/team/page/"+$page - 1;
 		$this->data['nextPage'] = $page >= $pages ? "" : "/team/page/"+$page+1;
+		
+		$this->data['goFirst'] = $page ==1 ? "disabled" : "";
+		$this->data['goLast'] = $page >= $pages ? "disabled" : "";
+		$this->data['firstPage'] = $page ==1 ? "" : "/team/page/"+1;
+		$this->data['lastPage'] = $page >= $pages ? "" : "/team/page/"+$pages;
 	}
 }

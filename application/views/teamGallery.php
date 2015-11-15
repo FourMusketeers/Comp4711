@@ -40,6 +40,7 @@
   </div>
   <div class="eight wide column">
     <div class="ui pagination right floated menu">
+	  <a class="icon item {goFirst}" href="{firstPage}">First</a>
       <a class="icon item {showLeft}" href="{previousPage}">
       <i class="left chevron icon"></i>
       </a>
@@ -48,6 +49,7 @@
       {/pages}
        <a class="icon item {showRight} " href="{nextPage}">
       <i class="right chevron icon"></i>
+	  <a class="icon item {goLast}" href="{lastPage}">Last</a>
       </a>
     </div>
   </div>
