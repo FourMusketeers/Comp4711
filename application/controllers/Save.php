@@ -70,12 +70,12 @@ class Save extends Application {
 				array(
 					'field' => 'age',
 					'label' => 'Age',
-					'rules' => 'required'
+					'rules' => 'required|integer|greater_than[0]|less_than[100]'
 					),
 				array(
 					'field' => 'weight',
 					'label' => 'Weight',
-					'rules' => 'required'
+					'rules' => 'required|numeric|greater_than[0]'
 					),
 				array(
 					'field' => 'college',
