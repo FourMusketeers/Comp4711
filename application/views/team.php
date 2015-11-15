@@ -12,9 +12,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<table class="ui single line table">
 		<thead>
 			<tr>
-				<th><a href="/team/page/{pageNum}/Name">Name <i class="sort icon"></i></a></th>
-				<th><a href="">Number <i class="sort icon"></i></a></th>
-				<th><a href="">Position <i class="sort icon"></i></a></th>
+				<th><a href="/team/page/{pageNum}/PlayerName">Name <i class="sort icon"></i></a></th>
+				<th><a href="/team/page/{pageNum}/Num">Number <i class="sort icon"></i></a></th>
+				<th><a href="/team/page/{pageNum}/Pos">Position <i class="sort icon"></i></a></th>
 			</tr>
 		</thead>
 		<tbody>

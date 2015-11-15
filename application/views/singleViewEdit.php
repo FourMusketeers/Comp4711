@@ -1,9 +1,9 @@
 <?php
    defined('BASEPATH') OR exit('No direct script access allowed');
    ?>
-
 <form class="ui fluid form" action="/save/Index/{PlayerID}" method="post" enctype="multipart/form-data">
 <div class="ui container">
+   <div id="validation_error">{errors}</div>
    <input type="text" name="playerName" value="{PlayerName}">
       <div class="ui pointing label">
          Player Name

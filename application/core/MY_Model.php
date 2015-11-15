@@ -229,6 +229,9 @@ class MY_Model extends CI_Model implements Active_Record {
         return $query->result();
     }
 
+    function order_by($colNam, $dir = "ASC"){
+        $this->db->order_by($colNam, $dir);
+    }
 //---------------------------------------------------------------------------
 //  Aggregate methods
 //---------------------------------------------------------------------------
@@ -259,7 +262,7 @@ class MY_Model extends CI_Model implements Active_Record {
 
     // Determine the highest key used
     function highest() {
-	$key = $this->_keyField;
+	    $key = $this->_keyField;
         $this->db->select_max($key);
         $query = $this->db->get($this->_tableName);
         $result = $query->result();

@@ -34,16 +34,38 @@ class Team extends Application {
 		$this->buildMenu();
 		$this->render();
 	}
-	public function page($page = 1)
+
+	public function page($page = 1, $orderCol = "")
 	{	
+		if(!isset($_SESSION['teamMode'])) {
+			$this->session->set_userdata('teamMode', "Team");
+		}
 		$this->data['pagebody'] = $_SESSION['teamMode'];
 		$this->load->model('roster');
+
+		// If ordering has been specified
+		if($orderCol != "")
+		{
+			// Check if order session exists
+			if(!isset($_SESSION['orderDir']))
+			{
+				$this->session->set_userdata('orderDir', "ASC");
+			} else {
+				if($_SESSION['orderDir'] == "ASC")
+					$this->session->set_userdata('orderDir', "DESC");
+				else
+					$this->session->set_userdata('orderDir', "ASC");
+			}
+			$this->roster->order_by($orderCol, $_SESSION['orderDir']);
+		}
+
 		$this->data["roster"] = $this->roster->paginate($page);
 		$pages = ceil($this->roster->size() / 12);
 		$this->setPagination($pages, $page);
 		$this->buildMenu();
 		$this->render();
 	}
+
 	private function buildMenu() {
 		if(isset($_SESSION['editMode']) && $_SESSION['editMode'] == "singleViewEdit") {
 			$this->data["options"] = $this->load->view('addPlayer', "", true);
@@ -72,5 +94,7 @@ class Team extends Application {
 		$this->data['goLast'] = $page >= $pages ? "disabled" : "";
 		$this->data['firstPage'] = $page ==1 ? "" : "/team/page/"+1;
 		$this->data['lastPage'] = $page >= $pages ? "" : "/team/page/"+$pages;
+
+		$this->data['pageNum'] = $page;
 	}
 }

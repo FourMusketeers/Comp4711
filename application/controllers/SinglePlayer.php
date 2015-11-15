@@ -25,12 +25,25 @@ class SinglePlayer extends Application {
 	 */
 	public function index($playerID)
 	{
+		// If no mode in session, set default to singleView
 		if(!isset($_SESSION['editMode'])) {
 			$this->session->set_userdata('editMode', "singleView");
 		}
+
+		// Set view to session value 
 		$this->data['pagebody'] = $_SESSION['editMode'];
 		$this->load->model('Roster');
 		$this->data = array_merge($this->data, (array)$this->Roster->get($playerID));
+		// Set validation messages if any, if session is in edit mode
+		if($_SESSION['editMode'] == 'singleViewEdit')
+		{
+			if($this->session->flashdata('validationmsg') != NULL)
+			{
+				$this->data['errors'] = $this->session->flashdata('validationmsg') . '<br/>';
+			}
+			else
+				$this->data['errors'] = '';
+		}
 
 		$this->render();
 	}
@@ -41,6 +54,11 @@ class SinglePlayer extends Application {
 		$data = $this->Roster->create();
 		$data->Image = rand(10,100) . ".png";
 		$this->data = array_merge($this->data, (array)$data);
+		if($this->session->flashdata('validationmsg') != NULL)
+			$this->data['errors'] = $this->session->flashdata('validationmsg') . '<br/>';
+		else
+			$this->data['errors'] = '';
+
 		$this->render();
 	}
 }
