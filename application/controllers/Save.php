@@ -12,31 +12,43 @@ class Save extends Application {
 	// Index of controller
 	public function index($ID = null)
 	{
-		$config['upload_path']          = './img/players';
-		$config['allowed_types']        = 'gif|jpg|png';
-		$config['max_size']             = 5000;
-		$config['max_width']            = 5000;
-		$config['max_height']           = 5000;
-		$config['overwrite']            = true;
+		$filepath = "./img/players/";
+
+		if(!file_exists($filepath))
+			mkdir($filepath, 0777, true);
+
+		$config['upload_path']          = $filepath;
+		$config['upload_url']			= $filepath;
+		$config['allowed_types']        = "gif|jpg|png";
+		$config['max_size']             = "5000KB";
+		$config['max_width']            = "5000";
+		$config['max_height']           = "5000";
+		$config['overwrite']            = TRUE;
 		$config['file_name']            = $this->input->post("image");
 
 		// Get image from computer
-		$this->load->library('upload', $config);
-		if ( !$this->input->post("image") && !$this->upload->do_upload('userfile'))
-		{
-			// Failure in here.
-			$error = array('error' => $this->upload->display_errors());
-			//Andrew do some error validation here 
-			//IF it gets in here it means it failed
-			//echo var_dump($error);
-			echo "Image upload failure";
-		}
-		else
-		{
-			// Success if it gets in here
-			$data = array('upload_data' => $this->upload->data());
-			echo "Image upload success";
-		}
+		$this->load->library('upload');
+		$this->upload->initialize($config);
+
+		$this->session->set_flashdata('validationmsg', 
+			$this->session->flashdata('validationmsg') . $this->input->post("userfile"));
+
+		if(!empty($_FILES['userfile']['name']))
+			if ( !$this->upload->do_upload('userfile') )
+			{
+				// Failure in here.
+				$error = array('error' => $this->upload->display_errors());
+				$this->session->set_flashdata('validationmsg', 
+					$this->session->flashdata('validationmsg') . $this->upload->display_errors());
+				//echo var_dump($error);
+				echo "Image upload failure";
+			}
+			else
+			{
+				// Success if it gets in here
+				$data = array('upload_data' => $this->upload->data());
+				echo "Image upload success";
+			}
 
 		// Form validation rules
 		$rules = array(
@@ -98,8 +110,8 @@ class Save extends Application {
 		} else {
 			// If updating a current player, compare number in textbox to original jersey number
 			// If it is the same, don't add unique validation, otherwise add unique validation
-			$query = (array)$this->Roster->get($ID);
-			$originalID = $query[0]['num'];
+			$query = $this->Roster->get($ID);
+			$originalID = $query->Num;
 			if((int)$record->Num == (int)$originalID)
 				$this->form_validation->set_rules('num', 'Jersey Number', 'required');
 			else
@@ -120,7 +132,7 @@ class Save extends Application {
 			}
 		}  else {
 			// If form is not valid we send the validation errors
-  			$this->session->set_flashdata('validationmsg', validation_errors());
+  			$this->session->set_flashdata('validationmsg', $this->session->flashdata('validationmsg') . validation_errors());
 			if($ID == null)
 				redirect('/SinglePlayer/createNew/');
 			else
