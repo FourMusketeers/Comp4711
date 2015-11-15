@@ -70,12 +70,12 @@ class Save extends Application {
 				array(
 					'field' => 'age',
 					'label' => 'Age',
-					'rules' => 'required'
+					'rules' => 'required|integer|greater_than[0]|less_than[100]'
 					),
 				array(
 					'field' => 'weight',
 					'label' => 'Weight',
-					'rules' => 'required'
+					'rules' => 'required|numeric|greater_than[0]'
 					),
 				array(
 					'field' => 'college',
@@ -91,7 +91,7 @@ class Save extends Application {
 			// If player is being updated, use same primary key
 			$record->PlayerID = $ID;	
 		}
-		
+
 		// Setting values to new player from form
 		$record->PlayerName = $this->input->post("playerName");
 		$record->Pos = $this->input->post("pos");
@@ -103,6 +103,10 @@ class Save extends Application {
 
 		// Apply rules
 		$this->form_validation->set_rules($rules);
+
+		// Add leading 0 to jersey number for functional ordering
+		if((int)$record->Num < 10 && $record->Num[0] != '0')
+			$record->Num = '0'.$record->Num;
 
 		// Apply a rule to jersey number based on if adding a new player or updating an old one
 		if($ID == null) {
@@ -145,7 +149,7 @@ class Save extends Application {
 		$this->load->helper('url');
 		$this->load->model('Roster');
 		$this->Roster->delete($ID);
-		redirect('/Team');
+		redirect('/Team/Page');
 	}
 
 	// Custom validation to check if position is real
