@@ -149,7 +149,7 @@ class Save extends Application {
 		$this->load->helper('url');
 		$this->load->model('Roster');
 		$this->Roster->delete($ID);
-		redirect('/Team');
+		redirect('/Team/Page');
 	}
 
 	// Custom validation to check if position is real

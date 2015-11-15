@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         Roster Manager
       </h1>
       <h2>Start Managing Your Roster Now!</h2>
-      <a href="/team">
+      <a href="/team/page">
       	<div class="ui huge primary button">View Team<i class="right arrow icon"></i></div>
       </a>
     </div>
