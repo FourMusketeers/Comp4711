@@ -19,7 +19,11 @@ class League extends Application {
 		$this->data['showRight'] = $page >= $pages ? "disabled" : "";
 		$this->data["previousPage"] = $page ==1 ? "" : "/League/page/"+$page - 1;
 		$this->data['nextPage'] = $page >= $pages ? "" : "/League/page/"+$page+1;
-		
+		$this->data['goFirst'] = $page ==1 ? "disabled" : "";
+		$this->data['goLast'] = $page >= $pages ? "disabled" : "";
+		$this->data['firstPage'] = $page ==1 ? "" : "/team/page/"+1;
+		$this->data['lastPage'] = $page >= $pages ? "" : "/team/page/"+$pages;
+
 		
 		
 		

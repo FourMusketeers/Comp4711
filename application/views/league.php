@@ -39,6 +39,7 @@
             </th>
             <th colspan="5">
                <div class="ui right floated menu">
+				  <a class="icon item {goFirst}" href="{firstPage}">First</a>
                   <a class="icon item {showLeft}" href="{previousPage}">
                   <i class="left chevron icon"></i>
                   </a>
@@ -48,6 +49,7 @@
                   <a class="icon item {showRight} " href="{nextPage}">
                   <i class="right chevron icon"></i>
                   </a>
+				  <a class="icon item {goLast}" href="{lastPage}">Last</a>
                </div>
             </th>
          </tr>
