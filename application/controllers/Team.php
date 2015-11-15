@@ -130,13 +130,13 @@ class Team extends Application {
 		$this->data['pages'] = $this->buildPagination($pages);
 		$this->data['showLeft'] = $page ==1 ? "disabled" : "";
 		$this->data['showRight'] = $page >= $pages ? "disabled" : "";
-		$this->data["previousPage"] = $page ==1 ? "" : "/team/page/"+$page - 1;
-		$this->data['nextPage'] = $page >= $pages ? "" : "/team/page/"+$page+1;
+		$this->data["previousPage"] = $page ==1 ? "" : $page - 1;
+		$this->data['nextPage'] = $page >= $pages ? "" : $page+1;
 		
 		$this->data['goFirst'] = $page ==1 ? "disabled" : "";
 		$this->data['goLast'] = $page >= $pages ? "disabled" : "";
-		$this->data['firstPage'] = $page ==1 ? "" : "/team/page/"+1;
-		$this->data['lastPage'] = $page >= $pages ? "" : "/team/page/"+$pages;
+		$this->data['firstPage'] = $page ==1 ? "" : 1;
+		$this->data['lastPage'] = $page >= $pages ? "" : $pages;
 
 		$this->data['pageNum'] = $page;
 	}

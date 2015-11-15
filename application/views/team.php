@@ -34,17 +34,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </th>
             <th colspan="5">
                <div class="ui right floated menu">
-				  <a class="icon item {goFirst}" href="{firstPage}">First</a>
-                  <a class="icon item {showLeft}" href="{previousPage}">
+				  <a class="icon item {goFirst}" href="/team/page/{firstPage}">First</a>
+                  <a class="icon item {showLeft}" href="/team/page/{previousPage}">
                   <i class="left chevron icon"></i>
                   </a>
                   {pages}
                     <a class="item" href="/team/page/{pageNum}">{pageNum}</a>
                   {/pages}
-                  <a class="icon item First " href="{nextPage}">
+                  <a class="icon item First " href="/team/page/{nextPage}">
                   <i class="right chevron icon"></i>
 				  </a>
-				  <a class="icon item {goLast}" href="{lastPage}">Last</a>
+				  <a class="icon item {goLast}" href="/team/page/{lastPage}">Last</a>
                </div>
             </th>
          </tr>
