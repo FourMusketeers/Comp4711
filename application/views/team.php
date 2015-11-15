@@ -6,15 +6,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div>
 	<h1>New England Patriots</h1>
     <div class="ui toggle checkbox">
-    <input type="checkbox" name="public" onchange="window.location.href='/team/pagelayout/gallery'">
+    <input type="checkbox" name="public" onchange="window.location.href='/team/layout/gallery'">
     <label>View In Gallery Mode</label>
   </div>
 	<table class="ui single line table">
 		<thead>
 			<tr>
-				<th><a href="/team/page/{pageNum}/PlayerName">Name <i class="sort icon"></i></a></th>
-				<th><a href="/team/page/{pageNum}/Num">Number <i class="sort icon"></i></a></th>
-				<th><a href="/team/page/{pageNum}/Pos">Position <i class="sort icon"></i></a></th>
+				<th><a href="/team/order/{pageNum}/PlayerName/{orderdir}">Name <i class="sort icon"></i></a></th>
+				<th><a href="/team/order/{pageNum}/Num/{orderdir}">Number <i class="sort icon"></i></a></th>
+				<th><a href="/team/order/{pageNum}/Pos/{orderdir}">Position <i class="sort icon"></i></a></th>
 			</tr>
 		</thead>
 		<tbody>

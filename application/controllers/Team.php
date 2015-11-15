@@ -7,14 +7,11 @@ class Team extends Application {
     {
         parent::__construct();
     }
-	public function layout($page) {
-		$this->session->set_userdata('teamMode', $page);
-	}
-	public function pagelayout($mode = null) {
+	public function layout($mode = null) {
 		if($mode == 'gallery') {
-			$this->layout('teamGallery');
+			$this->session->set_userdata('teamMode', 'teamGallery');
 		} else if($mode == 'team'){
-			$this->layout('Team');
+			$this->session->set_userdata('teamMode', 'Team');
 		}
 		$this->data['pagebody'] = $_SESSION['teamMode'];
 		
@@ -34,37 +31,70 @@ class Team extends Application {
 		$this->buildMenu();
 		$this->render();
 	}
-
-	public function page($page = 1, $orderCol = "")
+	public function order($page = 1, $orderCol = null, $orderdir = null) {
+		$this->data['pagebody'] = $_SESSION['teamMode'];
+		
+		$this->load->model('roster');
+		
+		if (!isset($_SESSION['orderDir'])) {
+			$this->session->set_userdata('orderDir', 'ASC');
+		}
+		
+		if ($orderdir == 'ASC') {
+			$this->data['orderdir'] = 'DESC';
+		} else if ($orderdir == 'DESC') {
+			$this->data['orderdir'] = 'ASC';
+		}
+		
+		if ($orderCol == 'PlayerName') {
+			$this->session->set_userdata('orderBy', 'PlayerName');
+		} else if ($orderCol == 'Num') {
+			$this->session->set_userdata('orderBy', 'Num');
+		} else if ($orderCol == 'Pos') {
+			$this->session->set_userdata('orderBy', 'Pos');
+		}
+		
+		if ($orderdir == 'ASC') {
+			$this->session->set_userdata('orderDir', 'ASC');
+		} else if ($orderdir == 'DESC') {
+			$this->session->set_userdata('orderDir', 'DESC');
+		}
+		
+		
+		// If ordering has been specified
+		if(isset($_SESSION['orderBy']))
+		{
+			$this->roster->order_by($_SESSION['orderBy'], $_SESSION['orderDir']);
+		}
+		
+		$this->data["roster"] = $this->roster->paginate($page);
+		$pages = ceil($this->roster->size() / 12);
+		$this->setPagination($pages, $page);
+		$this->buildMenu();
+		
+		$this->render();
+	}
+	public function page($page = 1)
 	{	
 		if(!isset($_SESSION['teamMode'])) {
-			$this->layout('Team');
+			$this->session->set_userdata('teamMode', 'Team');
 		}
 		
 		$this->data['pagebody'] = $_SESSION['teamMode'];
 		
 		$this->load->model('roster');
-
-		// If ordering has been specified
-		if($orderCol != "")
-		{
-			// Check if order session exists
-			if(!isset($_SESSION['orderDir']))
-			{
-				$this->session->set_userdata('orderDir', "ASC");
-			} else {
-				if($_SESSION['orderDir'] == "ASC")
-					$this->session->set_userdata('orderDir', "DESC");
-				else
-					$this->session->set_userdata('orderDir', "ASC");
-			}
-			$this->roster->order_by($orderCol, $_SESSION['orderDir']);
+		
+		$this->data['orderdir'] = 'ASC';
+		
+		if(isset($_SESSION['orderBy']) && isset($_SESSION['orderDir'])) {
+			$this->roster->order_by($_SESSION['orderBy'], $_SESSION['orderDir']);
 		}
 
 		$this->data["roster"] = $this->roster->paginate($page);
 		$pages = ceil($this->roster->size() / 12);
 		$this->setPagination($pages, $page);
 		$this->buildMenu();
+		
 		$this->render();
 	}
 
