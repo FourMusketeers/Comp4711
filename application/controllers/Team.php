@@ -16,6 +16,16 @@ class Team extends Application {
 		$this->data['pagebody'] = $_SESSION['teamMode'];
 		
 		$this->load->model('roster');
+		
+		if(isset($_SESSION['orderBy']) && isset($_SESSION['orderDir'])) {
+			$this->roster->order_by($_SESSION['orderBy'], $_SESSION['orderDir']);
+		}
+		if ($_SESSION['orderDir'] == 'ASC') {
+			$this->data['orderdir'] = 'ASC';
+		} else if ($_SESSION['orderDir'] == 'DESC') {
+			$this->data['orderdir'] = 'DESC';
+		}
+		
 		$this->data["roster"] = $this->roster->paginate(1);
 		$pages = ceil($this->roster->size() / 12);
 		$this->data['pages'] = $this->buildPagination($pages);
@@ -42,8 +52,10 @@ class Team extends Application {
 		
 		if ($orderdir == 'ASC') {
 			$this->data['orderdir'] = 'DESC';
+			$this->session->set_userdata('orderDir', 'DESC');
 		} else if ($orderdir == 'DESC') {
 			$this->data['orderdir'] = 'ASC';
+			$this->session->set_userdata('orderDir', 'ASC');
 		}
 		
 		if ($orderCol == 'PlayerName') {
@@ -53,13 +65,6 @@ class Team extends Application {
 		} else if ($orderCol == 'Pos') {
 			$this->session->set_userdata('orderBy', 'Pos');
 		}
-		
-		if ($orderdir == 'ASC') {
-			$this->session->set_userdata('orderDir', 'ASC');
-		} else if ($orderdir == 'DESC') {
-			$this->session->set_userdata('orderDir', 'DESC');
-		}
-		
 		
 		// If ordering has been specified
 		if(isset($_SESSION['orderBy']))
@@ -84,7 +89,13 @@ class Team extends Application {
 		
 		$this->load->model('roster');
 		
-		$this->data['orderdir'] = 'ASC';
+		if (!isset($_SESSION['orderDir'])) {
+			$this->data['orderdir'] = 'ASC';
+		} else if ($_SESSION['orderDir'] == 'ASC') {
+			$this->data['orderdir'] = 'ASC';
+		} else if ($_SESSION['orderDir'] == 'DESC') {
+			$this->data['orderdir'] = 'DESC';
+		}
 		
 		if(isset($_SESSION['orderBy']) && isset($_SESSION['orderDir'])) {
 			$this->roster->order_by($_SESSION['orderBy'], $_SESSION['orderDir']);
