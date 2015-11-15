@@ -7,8 +7,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $config['menu_choices'] = array(
 	'menudata' => array(
 			array('name' => 'Comp4711', 'link' => '/'),
-			array('name' => 'Team Roster', 'link' => '/team'),
-			array('name' => 'Leagues', 'link' => '/league'),
+			array('name' => 'Team Roster', 'link' => '/team/page/'),
+			array('name' => 'Leagues', 'link' => '/league/page/'),
 			array('name' => 'About', 'link' => '/about'),
 			array('name' => 'Edit Mode', 'link' => '/edit')
 		)

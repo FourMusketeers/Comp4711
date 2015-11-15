@@ -33,9 +33,7 @@
 <br />
 <div class="ui grid">
   <div class="eight wide column">
-    <div class="ui small button">
-      <a href="/team/">Page 1</a>
-    </div>
+    <a href="/team/page/" class="ui small button">Page 1</a>
     {options}
   </div>
   <div class="eight wide column">

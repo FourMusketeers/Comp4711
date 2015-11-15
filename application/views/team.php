@@ -29,9 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<tfoot>
          <tr>
             <th>
-              <div class="ui small button">
-                <a href="/team/">Page 1</a>
-              </div>
+                <a href="/team/page/" class="ui small button">Page 1</a>
               {options}
             </th>
             <th colspan="5">

@@ -7,36 +7,6 @@ class Team extends Application {
     {
         parent::__construct();
     }
-
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
-	public function index()
-	{	
-		if(!isset($_SESSION['teamMode'])) {
-			$this->layout('Team');
-		}
-		$this->data['pagebody'] = $_SESSION['teamMode'];
-		
-		$this->load->model('roster');
-		$this->data["roster"] = $this->roster->paginate(1);
-		$pages = ceil($this->roster->size() / 12);
-		$this->setPagination($pages, 1);
-		$this->buildMenu();
-		$this->render();
-	}
 	public function layout($page) {
 		$this->session->set_userdata('teamMode', $page);
 	}
@@ -64,7 +34,7 @@ class Team extends Application {
 		$this->buildMenu();
 		$this->render();
 	}
-	public function page($page)
+	public function page($page = 1)
 	{	
 		$this->data['pagebody'] = $_SESSION['teamMode'];
 		$this->load->model('roster');

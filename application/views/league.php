@@ -33,9 +33,9 @@
       <tfoot>
          <tr>
             <th>
-              <div class="ui small button">
-                <a href="/League/">Page 1</a>
-              </div>
+              <a href="/League/page/" class="ui small button">
+                  Page 1
+               </a>
             </th>
             <th colspan="5">
                <div class="ui right floated menu">
