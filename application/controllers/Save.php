@@ -91,7 +91,7 @@ class Save extends Application {
 			// If player is being updated, use same primary key
 			$record->PlayerID = $ID;	
 		}
-		
+
 		// Setting values to new player from form
 		$record->PlayerName = $this->input->post("playerName");
 		$record->Pos = $this->input->post("pos");
@@ -103,6 +103,10 @@ class Save extends Application {
 
 		// Apply rules
 		$this->form_validation->set_rules($rules);
+
+		// Add leading 0 to jersey number for functional ordering
+		if((int)$record->Num < 10 && $record->Num[0] != '0')
+			$record->Num = '0'.$record->Num;
 
 		// Apply a rule to jersey number based on if adding a new player or updating an old one
 		if($ID == null) {
