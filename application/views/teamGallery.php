@@ -1,7 +1,7 @@
 <div class="ui container">
 <h1>New England Patriots</h1>
     <div class="ui toggle checkbox">
-    <input type="checkbox" checked name="public" onchange="window.location.href='/team/pagelayout'">
+    <input type="checkbox" checked name="public1" onchange="window.location.href='/team/pagelayout/team/'">
     <label>View In Gallery Mode</label>
   </div>
 <div class="ui container stripe segment">

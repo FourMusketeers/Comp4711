@@ -10,10 +10,10 @@ class Team extends Application {
 	public function layout($page) {
 		$this->session->set_userdata('teamMode', $page);
 	}
-	public function pagelayout() {
-		if($_SESSION['teamMode'] == 'Team') {
+	public function pagelayout($mode = null) {
+		if($mode == 'gallery') {
 			$this->layout('teamGallery');
-		} else {
+		} else if($mode == 'team'){
 			$this->layout('Team');
 		}
 		$this->data['pagebody'] = $_SESSION['teamMode'];
@@ -36,7 +36,12 @@ class Team extends Application {
 	}
 	public function page($page = 1)
 	{	
+		if(!isset($_SESSION['teamMode'])) {
+			$this->layout('Team');
+		}
+		
 		$this->data['pagebody'] = $_SESSION['teamMode'];
+		
 		$this->load->model('roster');
 		$this->data["roster"] = $this->roster->paginate($page);
 		$pages = ceil($this->roster->size() / 12);
