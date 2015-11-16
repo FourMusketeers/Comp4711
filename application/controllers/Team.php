@@ -17,6 +17,10 @@ class Team extends Application {
 		
 		$this->load->model('roster');
 		
+		if (!isset($_SESSION['orderDir'])) {
+			$this->session->set_userdata('orderDir', 'ASC');
+		}
+		
 		if(isset($_SESSION['orderBy']) && isset($_SESSION['orderDir'])) {
 			$this->roster->order_by($_SESSION['orderBy'], $_SESSION['orderDir']);
 		}
