@@ -129,7 +129,7 @@ class Save extends Application {
 			// Check if adding a new player or just updating an old one
 			if($ID == null) {
 				$this->Roster->add($record);
-				redirect('/Team/Page');	
+				redirect('/Team/Page/');	
 			} else {
 				$this->Roster->update($record);	
 				header('Location: ' . $_SERVER["HTTP_REFERER"] );
