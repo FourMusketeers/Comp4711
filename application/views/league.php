@@ -4,6 +4,9 @@
 <!DOCTYPE html>
 <div class="ui container">
    <h1>League</h1>
+   <input type="button" onclick="window.location.href='/league/page'" value="Table"></input>
+   <input type="button" onclick="window.location.href='/league/layout/leagueConference'" value="Conference"></input>
+   <input type="button" onclick="window.location.href='/league/layout/leagueDivision'" value="Division"></input>
    <table class="ui single line table">
       <thead>
          <tr>

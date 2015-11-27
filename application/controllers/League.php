@@ -7,6 +7,33 @@ class League extends Application {
     {
         parent::__construct();
     }
+	
+	public function layout($mode) {
+		$this->data['pagebody'] = $mode;
+		$this->load->library('parser');
+		$this->load->model('leagues');
+			
+		if ($mode = "leagueConference") {
+			$this->data['AFCteam'] = $this->leagues->getConference('American');
+			$this->data['NFCteam'] = $this->leagues->getConference('National');
+		}
+		
+		if ($mode = "leagueDivision") {
+			$this->data['AFCEast'] = $this->leagues->getDivision('AFC East Team');
+			$this->data['AFCNorth'] = $this->leagues->getDivision('AFC North Team');
+			$this->data['AFCSouth'] = $this->leagues->getDivision('AFC South Team');
+			$this->data['AFCWest'] = $this->leagues->getDivision('AFC West Team');
+			
+			$this->data['NFCEast'] = $this->leagues->getDivision('NFC East Team');
+			$this->data['NFCNorth'] = $this->leagues->getDivision('NFC North Team');
+			$this->data['NFCSouth'] = $this->leagues->getDivision('NFC South Team');
+			$this->data['NFCWest'] = $this->leagues->getDivision('NFC West Team');
+		}
+
+		
+		
+		$this->render();
+	}
 
 	public function page($page = 1) {
 		$this->data['pagebody'] = 'league';
@@ -22,28 +49,7 @@ class League extends Application {
 		$this->data['goFirst'] = $page ==1 ? "disabled" : "";
 		$this->data['goLast'] = $page >= $pages ? "disabled" : "";
 		$this->data['firstPage'] = $page ==1 ? "" : "/team/page/"+1;
-		$this->data['lastPage'] = $page >= $pages ? "" : "/team/page/"+$pages;
-
-		
-		
-		
-		/* TESTING */
-		// $newdata = array(
-			// 'togglegallery' => false,
-			// 'rosterorder' => false,
-			// 'editing' => false,
-		// );
-		
-		$this->session->set_userdata('togglegallery', false);
-		if (isset($_SESSION['togglegallery'])) {
-			//echo ("HELLLOOO");
-		} else {
-			
-			//echo ("FAIILED");
-		}
-		
-		/* END OF SESSION TEST */
-		
+		$this->data['lastPage'] = $page >= $pages ? "" : "/team/page/"+$pages;		
 		
 		$this->render();
 	}
