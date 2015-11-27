@@ -2,8 +2,8 @@
 -- version 4.4.14
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 22, 2015 at 03:34 AM
+-- Host: localhost
+-- Generation Time: Nov 27, 2015 at 01:22 AM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `leagues`
 --
 
+DROP TABLE IF EXISTS `leagues`;
 CREATE TABLE IF NOT EXISTS `leagues` (
   `TeamName` varchar(50) NOT NULL,
   `Win` varchar(1) DEFAULT NULL,
@@ -42,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `leagues` (
   `Pct2` varchar(5) DEFAULT NULL,
   `Conf` varchar(6) DEFAULT NULL,
   `Pct3` varchar(5) DEFAULT NULL,
-  `Non-Conf` varchar(8) DEFAULT NULL,
+  `NonConf` varchar(8) DEFAULT NULL,
   `Streak` varchar(6) DEFAULT NULL,
   `Last5` varchar(6) DEFAULT NULL,
   `Image` varchar(100) NOT NULL,
@@ -54,8 +55,8 @@ CREATE TABLE IF NOT EXISTS `leagues` (
 -- Dumping data for table `leagues`
 --
 
-INSERT INTO `leagues` (`TeamName`, `Win`, `Loss`, `Tie`, `Pct`, `PF`, `PA`, `NetPts`, `TD`, `Home`, `Road`, `Division`, `Pct2`, `Conf`, `Pct3`, `Non-Conf`, `Streak`, `Last5`, `Image`, `conference`, `divisionName`) VALUES
-('Arizona Cardinals', '6', '2', '0', '0.75', '263', '153', '110', '32', '3-1', '3-1', '1-1', '0.5', '4-1', '0.8', '2-1', '2W', '3-2', 'ARI_logo-80x90.gif', 'National', 'NFC West Team'),
+INSERT INTO `leagues` (`TeamName`, `Win`, `Loss`, `Tie`, `Pct`, `PF`, `PA`, `NetPts`, `TD`, `Home`, `Road`, `Division`, `Pct2`, `Conf`, `Pct3`, `NonConf`, `Streak`, `Last5`, `Image`, `conference`, `divisionName`) VALUES
+('Arizona Cardinals', '7', '2', '0', '0.75', '302', '185', '117', '32', '3-1', '4-1', '2-1', '0.5', '5-1', '0.8', '2-1', '3W', '4-1', 'ARI_logo-80x90.gif', 'NFC', 'NCW'),
 ('Atlanta Falcons', '6', '3', '0', '0.667', '229', '190', '39', '27', '3-1', '3-2', '0-2', '0', '4-3', '0.571', '2-0', '2L', '2-3', 'ATL_logo-80x90.gif', 'National', 'NFC South Team'),
 ('Baltimore Ravens', '2', '6', '0', '0.25', '190', '214', '-24', '19', '1-2', '1-4', '1-2', '0.333', '2-4', '0.333', '0-2', '1W', '2-3', 'BAL_logo-80x90.gif', 'American', 'AFC North Team'),
 ('Buffalo Bills', '4', '4', '0', '0.5', '209', '190', '19', '26', '2-3', '2-1', '2-1', '0.667', '4-3', '0.571', '0-1', '1W', '2-3', 'BUF_logo-80x90.gif', 'American', 'AFC East Team'),
@@ -94,6 +95,7 @@ INSERT INTO `leagues` (`TeamName`, `Win`, `Loss`, `Tie`, `Pct`, `PF`, `PA`, `Net
 -- Table structure for table `players`
 --
 
+DROP TABLE IF EXISTS `players`;
 CREATE TABLE IF NOT EXISTS `players` (
   `PlayerID` int(11) NOT NULL,
   `Pos` varchar(25) NOT NULL,
