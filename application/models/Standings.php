@@ -9,41 +9,89 @@
 class Standings extends MY_Model {
 	// Constructor
 	public function __construct(){
-		parent::__construct('Leagues', 'TeamName'); 
-		$this->xml = simplexml_load_file('mock_data/standings.xml');
+		parent::__construct('Score', 'scoreID'); 
+		//$this->xml = simplexml_load_file('mock_data/standings.xml');
+		$this->load->library('xmlrpc');
+		//$config['debug'] = true;
+		//$this->xmlrpc->initialize($config);
+		$this->xmlrpc->server("nfl.jlparry.com/rpc", 80);
+		$this->xmlrpc->method('since');
+		$request = array('19321203');
+		$this->xmlrpc->request($request);
+	 	if ( ! $this->xmlrpc->send_request()) {
+			echo $this->xmlrpc->display_error();
+		} else {	
+			//echo '<pre>';
+			//print_r($this->xmlrpc->display_response());
+			//echo '</pre>';
+			$this->xmlResult = $this->xmlrpc->display_response();
+		}
+
+		$this->updateDatabase();
 	}
-	
+	 
 	public function updateDatabase() {
-		$teams = array();
-		foreach($this->xml->team as $team) {
-			$team = $this->objectMapping($team);
-			if(parent::exists($team->TeamName)) {
-				parent::update($team);
+		//Update the scores table
+		$scores = array();
+		foreach($this->xmlResult as $score) {
+			$score = $this->objectMapping($score);
+			array_push($scores, $score);
+		}
+		foreach($scores as $score) {
+			if(parent::exists($score->scoreID)) {
+				parent::update($score);
 			} else {
-				parent::add($team);
+				parent::add($score);
 			}
 		}
-	}
-	private function objectMapping($team) {
-		$record = new stdClass();
-		$record->TeamName = (string) $team->fullname;
-		//$record->code = (string) $team['code'];
-		$record->conference = (string) $team['conference'];
-		$record->divisionName = (string) $team['division'];
-		$record->Win = (string) $team->totals->wins;
-		$record->Loss = (string) $team->totals->losses;
-		$record->Tie = (string) $team->totals->ties;
-		$record->PF = (string) $team->totals->for;
-		$record->PA = (string) $team->totals->against;
-		$record->NetPts = (string) $team->totals->net;
-		$record->Home = (string) $team->breakdown->home;
-		$record->Road = (string) $team->breakdown->road;
-		$record->Division = (string) $team->breakdown->indiv;
-		$record->Conf = (string) $team->breakdown->inconf;
-		$record->NonConf = (string) $team->breakdown->nonconf;
-		$record->Streak = (string) $team->recent->streak;
-		$record->Last5 = (string) $team->recent->last5;
+		$standings = $this->buildTeamStandings($scores);
+		foreach($standings as $teamName => $standing) {
+			echo $teamName;
+			echo '<pre>';
+			echo var_dump($standing);
+			echo '</pre>';
+		}
 
+	}
+	private function objectMapping($score) {
+		$record = new stdClass();
+		$scoreArray = explode(":", $score["score"]);
+		$record->scoreID = $score["number"];
+		$record->homeTeam = $score["home"];
+		$record->awayTeam = $score["away"];
+		$record->date =  (new DateTime($score["date"]))->format('Y-m-d H:i:s');
+		$record->homeScore = $scoreArray[0];
+		$record->teamScore = $scoreArray[1];
 		return $record;
+	}
+	private function buildTeamStandings($scores) {
+		$standings = array();
+		foreach($scores as $score) {
+			$winner = $score->homeScore > $score->teamScore ? $score->homeTeam : $score->awayTeam;
+			$loser  = $score->homeScore < $score->teamScore ? $score->homeTeam : $score->awayTeam;
+			echo "$winner : $loser" ;
+			if(!isset($standings[$score->homeTeam])) {
+				$standings[$score->homeTeam] = array(
+						"win" => 0,
+						"loss" => 0,
+						"tie" => 0
+					);
+			}
+			if(!isset($standings[$score->awayTeam])) {
+				$standings[$score->awayTeam] = array(
+						"win" => 0,
+						"loss" => 0,
+						"tie" => 0
+					);
+			}
+			if($score->teamScore == $score->awayTeam) {
+				$standings[$score->teamTeam]['tie']++;
+				$standings[$score->homeTeam]['tie']++;
+			} else {
+				$standings[$winner]["win"]++;
+				$standings[$loser]["loss"]++;
+			}
+		}
+		return $standings;
 	}
 }

@@ -22,7 +22,9 @@ class Welcome extends Application {
 	{
 		$this->data['pagebody'] = 'welcome_message'; //Load the view
 		$this->load->model('Roster'); //Load the model
-		$this->data['roster'] = $this->Roster->all();
-		$this->render();
+		//$this->data['roster'] = $this->Roster->all();
+		//$this->render();
+		$this->load->model('Standings');
+		
 	}
 }
