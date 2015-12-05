@@ -49,3 +49,7 @@
 #validation_error{
 	color: red;
 }
+
+.leagueHeader {
+	margin-top: 40px !important;
+}
