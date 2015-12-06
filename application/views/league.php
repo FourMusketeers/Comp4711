@@ -17,6 +17,11 @@
             <th><a href="/league/order/Tie/{leagueorderdir}">Ties <i class="sort icon"></i></a></th>
             <th><a href="/league/order/Conf/{leagueorderdir}">Conf <i class="sort icon"></i></a></th>
             <th><a href="/league/order/Division/{leagueorderdir}">Division <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/PF/{leagueorderdir}">Points For <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/PA/{leagueorderdir}">Points Against <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/NetPts/{leagueorderdir}">Net Point <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Home/{leagueorderdir}">Home <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Road/{leagueorderdir}">Away <i class="sort icon"></i></a></th>
          </tr>
       </thead>
       <tbody>
@@ -31,6 +36,11 @@
             <td>{Tie}</td>
             <td>{Conf}</td>
             <td>{Division}</td>
+			<td>{PF}</td>
+			<td>{PA}</td>
+			<td>{NetPts}</td>
+			<td>{Home}</td>
+			<td>{Road}</td>
          </tr>
          {/teams}
       </tbody>
