@@ -4,18 +4,18 @@
 <!DOCTYPE html>
 <div class="ui container">
    <h1>League Division</h1>
-   <input type="button" onclick="window.location.href='/league/page'" value="Table"></input>
-   <input type="button" onclick="window.location.href='/league/layout/leagueConference'" value="Conference"></input>
-   <input type="button" onclick="window.location.href='/league/layout/leagueDivision'" value="Division"></input>
+   <a href="/league/layout/league" class="ui small button">Table</a>
+   <a href="/league/layout/leagueConference" class="ui small button">Conference</a>
+   <a href="/league/layout/leagueDivision" class="ui small button">Division</a>
    
    <table class="ui compact table">
 	  <thead>
 		 <tr>
-			<th>AFC East Team</th>
-			<th>Division</th>
-			<th>Wins</th>
-			<th>Losses</th>
-			<th>Ties</th>
+			<th><a href="/league/order/TeamName/{leagueorderdir}/AFCE">AFC East Team <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Division/{leagueorderdir}/AFCE">Division <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Win/{leagueorderdir}/AFCE">Wins <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Loss/{leagueorderdir}/AFCE">Losses <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Tie/{leagueorderdir}/AFCE">Ties <i class="sort icon"></i></a></th>
 		 </tr>
 	  </thead>
 	  <tbody>
@@ -34,11 +34,11 @@
    <table class="ui compact table">
 	  <thead>
 		 <tr>
-			<th>AFC North Team</th>
-			<th>Division</th>
-			<th>Wins</th>
-			<th>Losses</th>
-			<th>Ties</th>
+			<th><a href="/league/order/TeamName/{leagueorderdir}/AFCN">AFC North Team <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Division/{leagueorderdir}/AFCN">Division <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Win/{leagueorderdir}/AFCN">Wins <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Loss/{leagueorderdir}/AFCN">Losses <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Tie/{leagueorderdir}/AFCN">Ties <i class="sort icon"></i></a></th>
 		 </tr>
 	  </thead>
 	  <tbody>
@@ -57,11 +57,11 @@
    <table class="ui compact table">
 	  <thead>
 		 <tr>
-			<th>AFC South Team</th>
-			<th>Division</th>
-			<th>Wins</th>
-			<th>Losses</th>
-			<th>Ties</th>
+			<th><a href="/league/order/TeamName/{leagueorderdir}/AFCS">AFC South Team <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Division/{leagueorderdir}/AFCS">Division <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Win/{leagueorderdir}/AFCS">Wins <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Loss/{leagueorderdir}/AFCS">Losses <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Tie/{leagueorderdir}/AFCS">Ties <i class="sort icon"></i></a></th>
 		 </tr>
 	  </thead>
 	  <tbody>
@@ -80,11 +80,11 @@
    <table class="ui compact table">
 	  <thead>
 		 <tr>
-			<th>AFC West Team</th>
-			<th>Division</th>
-			<th>Wins</th>
-			<th>Losses</th>
-			<th>Ties</th>
+			<th><a href="/league/order/TeamName/{leagueorderdir}/AFCW">AFC West Team <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Division/{leagueorderdir}/AFCW">Division <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Win/{leagueorderdir}/AFCW">Wins <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Loss/{leagueorderdir}/AFCW">Losses <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Tie/{leagueorderdir}/AFCW">Ties <i class="sort icon"></i></a></th>
 		 </tr>
 	  </thead>
 	  <tbody>
@@ -103,11 +103,11 @@
    <table class="ui compact table">
 	  <thead>
 		 <tr>
-			<th>NFC East Team</th>
-			<th>Division</th>
-			<th>Wins</th>
-			<th>Losses</th>
-			<th>Ties</th>
+			<th><a href="/league/order/TeamName/{leagueorderdir}/NFCE">NFC East Team <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Division/{leagueorderdir}/NFCE">Division <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Win/{leagueorderdir}/NFCE">Wins <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Loss/{leagueorderdir}/NFCE">Losses <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Tie/{leagueorderdir}/NFCE">Ties <i class="sort icon"></i></a></th>
 		 </tr>
 	  </thead>
 	  <tbody>
@@ -126,11 +126,11 @@
    <table class="ui compact table">
 	  <thead>
 		 <tr>
-			<th>NFC North Team</th>
-			<th>Division</th>
-			<th>Wins</th>
-			<th>Losses</th>
-			<th>Ties</th>
+			<th><a href="/league/order/TeamName/{leagueorderdir}/NFCN">NFC North Team <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Division/{leagueorderdir}/NFCN">Division <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Win/{leagueorderdir}/NFCN">Wins <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Loss/{leagueorderdir}/NFCN">Losses <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Tie/{leagueorderdir}/NFCN">Ties <i class="sort icon"></i></a></th>
 		 </tr>
 	  </thead>
 	  <tbody>
@@ -149,11 +149,11 @@
    <table class="ui compact table">
 	  <thead>
 		 <tr>
-			<th>NFC South Team</th>
-			<th>Division</th>
-			<th>Wins</th>
-			<th>Losses</th>
-			<th>Ties</th>
+			<th><a href="/league/order/TeamName/{leagueorderdir}/NFCS">NFC South Team <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Division/{leagueorderdir}/NFCS">Division <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Win/{leagueorderdir}/NFCS">Wins <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Loss/{leagueorderdir}/NFCS">Losses <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Tie/{leagueorderdir}/NFCS">Ties <i class="sort icon"></i></a></th>
 		 </tr>
 	  </thead>
 	  <tbody>
@@ -172,11 +172,11 @@
    <table class="ui compact table">
 	  <thead>
 		 <tr>
-			<th>NFC West Team</th>
-			<th>Division</th>
-			<th>Wins</th>
-			<th>Losses</th>
-			<th>Ties</th>
+			<th><a href="/league/order/TeamName/{leagueorderdir}/NFCW">NFC West Team <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Division/{leagueorderdir}/NFCW">Division <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Win/{leagueorderdir}/NFCW">Wins <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Loss/{leagueorderdir}/NFCW">Losses <i class="sort icon"></i></a></th>
+			<th><a href="/league/order/Tie/{leagueorderdir}/NFCW">Ties <i class="sort icon"></i></a></th>
 		 </tr>
 	  </thead>
 	  <tbody>

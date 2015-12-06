@@ -4,18 +4,19 @@
 <!DOCTYPE html>
 <div class="ui container">
    <h1>League</h1>
-   <input type="button" onclick="window.location.href='/league/page'" value="Table"></input>
-   <input type="button" onclick="window.location.href='/league/layout/leagueConference'" value="Conference"></input>
-   <input type="button" onclick="window.location.href='/league/layout/leagueDivision'" value="Division"></input>
+   <a href="/league/layout/league" class="ui small button">Table</a>
+   <a href="/league/layout/leagueConference" class="ui small button">Conference</a>
+   <a href="/league/layout/leagueDivision" class="ui small button">Division</a>
+   
    <table class="ui single line table">
       <thead>
          <tr>
-            <th>Name</th>
-            <th>Wins</th>
-            <th>Losses</th>
-            <th>Ties</th>
-            <th>Conf</th>
-            <th>Division</th>
+            <th><a href="/league/order/TeamName/{leagueorderdir}">Name <i class="sort icon"></i></a></th>
+            <th><a href="/league/order/Win/{leagueorderdir}">Wins <i class="sort icon"></i></a></th>
+            <th><a href="/league/order/Loss/{leagueorderdir}">Losses <i class="sort icon"></i></a></th>
+            <th><a href="/league/order/Tie/{leagueorderdir}">Ties <i class="sort icon"></i></a></th>
+            <th><a href="/league/order/Conf/{leagueorderdir}">Conf <i class="sort icon"></i></a></th>
+            <th><a href="/league/order/Division/{leagueorderdir}">Division <i class="sort icon"></i></a></th>
          </tr>
       </thead>
       <tbody>
@@ -42,17 +43,17 @@
             </th>
             <th colspan="5">
                <div class="ui right floated menu">
-				  <a class="icon item {goFirst}" href="{firstPage}">First</a>
-                  <a class="icon item {showLeft}" href="{previousPage}">
+				  <a class="icon item {goFirst}" href="/league/page/{firstPage}">First</a>
+                  <a class="icon item {showLeft}" href="/league/page/{previousPage}">
                   <i class="left chevron icon"></i>
                   </a>
                   {pages}
-                    <a class="item" href="/League/page/{pageNum}">{pageNum}</a>
+                    <a class="item" href="/league/page/{pageNum}">{pageNum}</a>
                   {/pages}
-                  <a class="icon item {showRight} " href="{nextPage}">
+                  <a class="icon item {showRight} " href="/league/page/{nextPage}">
                   <i class="right chevron icon"></i>
                   </a>
-				  <a class="icon item {goLast}" href="{lastPage}">Last</a>
+				  <a class="icon item {goLast}" href="/league/page/{lastPage}">Last</a>
                </div>
             </th>
          </tr>
