@@ -23,7 +23,41 @@ class Welcome extends Application {
 		$this->data['pagebody'] = 'welcome_message'; //Load the view
 		$this->load->model('Roster'); //Load the model
 		$this->data['roster'] = $this->Roster->all();
+
+		$components = array();
+		$options = array(
+				array( 	'teamname' => 'Buffalo Bills',
+						'teamcode' => 'BUF',
+				),
+				array(	'teamname' => 'New York Jets',
+						'teamcode' => 'NYJ',
+				),
+				array( 	'teamname' => 'Miami Dolphins',
+						'teamcode' => 'MIA',
+				),
+			);
+
+		$this->data['dropdown'] = $options;
+
 		$this->render();
 		
+	}
+
+	public function prediction()
+	{
+		if(!isset($_POST))
+			redirect("/");
+
+
+			return true;
+	}
+
+	public function prediction()
+	{
+		if(!isset($_POST))
+			redirect("/");
+
+
+			return true;
 	}
 }

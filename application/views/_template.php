@@ -10,6 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" type="text/css" href="/css/app.css">
 	<script src="semantic/dist/semantic.min.js"></script>
   <script src="js/app.js"></script>
+  {caboose_styles}
 </head>
 <body class="appBody">
 <div class="ui large top fixed hidden menu">
@@ -51,5 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
     </div>
   </div>
+  {caboose_scripts}
+  {caboose_trailings}
 </body>
 </html>

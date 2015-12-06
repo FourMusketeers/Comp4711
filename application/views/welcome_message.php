@@ -1,6 +1,29 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
+
+<script>
+  $(function(){
+    $("predictionform").submit(function(){
+      //e.preventDefault();
+      dataString = $("predictionform").serialize();
+      team = $('dropdownfield :selected').val();
+      alert(team);
+      $.ajax({
+        type: "POST",
+        url: "<?php echo base_url(); ?>/Welcome/Prediction",
+        data: dataString,
+
+        success: function(data){
+          alert('Successful!');
+        }
+      });
+      // Stops form post.
+      return false;
+    });
+  });
+</script>
+
 <div id="appMasthead" class="ui inverted vertical center aligned segment">
     <div class="ui text container appCenterVertical">
       <h1 class="ui inverted header">
@@ -11,7 +34,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       	<div class="ui huge primary button">View Team<i class="right arrow icon"></i></div>
       </a>
     </div>
+</div>
 
+<div id="predictionsection">
+  <h1 class="ui header">Prediction Calculator</h1>
+  <h2>Please select a team.</h2>
+  <form id="predictionform" class="ui fluid form" method="post" enctype="multipart/form-data">
+    <select id="dropdownfield" name="teamdropdown">
+    {dropdown}
+      <option value={teamcode}>{teamname}</option>
+    {/dropdown}
+    </select>
+    <input type="submit">
+  </form>
+  <div id="predictionresults"/>
 </div>
 
 <div class="ui container stripe segment">
