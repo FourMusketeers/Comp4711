@@ -81,13 +81,205 @@ class League extends Application {
 		
 		if (!isset($_SESSION['leagueOrderDir'])) {
 			$this->session->set_userdata('leagueOrderDir', 'ASC');
+			$this->session->set_userdata('leagueOrderDirafce', 'ASC');
+			$this->session->set_userdata('leagueOrderDirafcn', 'ASC');
+			$this->session->set_userdata('leagueOrderDirafcs', 'ASC');
+			$this->session->set_userdata('leagueOrderDirafcw', 'ASC');
+			$this->session->set_userdata('leagueOrderDirnfce', 'ASC');
+			$this->session->set_userdata('leagueOrderDirnfcn', 'ASC');
+			$this->session->set_userdata('leagueOrderDirnfcs', 'ASC');
+			$this->session->set_userdata('leagueOrderDirnfcw', 'ASC');
+			$this->session->set_userdata('leagueOrderDirafc', 'ASC');
+			$this->session->set_userdata('leagueOrderDirnfc', 'ASC');
 		}
 		
 		if ($orderdir == 'ASC') {
-			$this->data['leagueorderdir'] = 'DESC';
+			if($orderdiv == 'AFCE') {
+				$this->data['leagueorderdirafce'] = 'DESC';
+				$this->data['leagueorderdirafcn'] = $_SESSION['leagueOrderDirafcn'];
+				$this->data['leagueorderdirafcs'] = $_SESSION['leagueOrderDirafcs'];
+				$this->data['leagueorderdirafcw'] = $_SESSION['leagueOrderDirafcw'];
+				$this->data['leagueorderdirnfce'] = $_SESSION['leagueOrderDirnfce'];
+				$this->data['leagueorderdirnfcn'] = $_SESSION['leagueOrderDirnfcn'];
+				$this->data['leagueorderdirnfcs'] = $_SESSION['leagueOrderDirnfcs'];
+				$this->data['leagueorderdirnfcw'] = $_SESSION['leagueOrderDirnfcw'];
+				$this->session->set_userdata('leagueOrderDirafce', 'DESC');
+			} else if ($orderdiv == 'AFCN') {
+				$this->data['leagueorderdirafcn'] = 'DESC';
+				$this->data['leagueorderdirafce'] = $_SESSION['leagueOrderDirafce'];
+				$this->data['leagueorderdirafcs'] = $_SESSION['leagueOrderDirafcs'];
+				$this->data['leagueorderdirafcw'] = $_SESSION['leagueOrderDirafcw'];
+				$this->data['leagueorderdirnfce'] = $_SESSION['leagueOrderDirnfce'];
+				$this->data['leagueorderdirnfcn'] = $_SESSION['leagueOrderDirnfcn'];
+				$this->data['leagueorderdirnfcs'] = $_SESSION['leagueOrderDirnfcs'];
+				$this->data['leagueorderdirnfcw'] = $_SESSION['leagueOrderDirnfcw'];
+				$this->session->set_userdata('leagueOrderDirafcn', 'DESC');
+			} else if ($orderdiv == 'AFCS') {
+				$this->data['leagueorderdirafcs'] = 'DESC';
+				$this->data['leagueorderdirafcn'] = $_SESSION['leagueOrderDirafcn'];
+				$this->data['leagueorderdirafce'] = $_SESSION['leagueOrderDirafce'];
+				$this->data['leagueorderdirafcw'] = $_SESSION['leagueOrderDirafcw'];
+				$this->data['leagueorderdirnfce'] = $_SESSION['leagueOrderDirnfce'];
+				$this->data['leagueorderdirnfcn'] = $_SESSION['leagueOrderDirnfcn'];
+				$this->data['leagueorderdirnfcs'] = $_SESSION['leagueOrderDirnfcs'];
+				$this->data['leagueorderdirnfcw'] = $_SESSION['leagueOrderDirnfcw'];
+				$this->session->set_userdata('leagueOrderDirafcs', 'DESC');
+			} else if ($orderdiv == 'AFCW') {
+				$this->data['leagueorderdirafce'] = 'DESC';
+				$this->data['leagueorderdirafcn'] = $_SESSION['leagueOrderDirafcn'];
+				$this->data['leagueorderdirafcs'] = $_SESSION['leagueOrderDirafcs'];
+				$this->data['leagueorderdirafcw'] = $_SESSION['leagueOrderDirafcw'];
+				$this->data['leagueorderdirnfce'] = $_SESSION['leagueOrderDirnfce'];
+				$this->data['leagueorderdirnfcn'] = $_SESSION['leagueOrderDirnfcn'];
+				$this->data['leagueorderdirnfcs'] = $_SESSION['leagueOrderDirnfcs'];
+				$this->data['leagueorderdirnfcw'] = $_SESSION['leagueOrderDirnfcw'];
+				$this->session->set_userdata('leagueOrderDirafcw', 'DESC');
+			} else if ($orderdiv == 'NFCE') {
+				$this->data['leagueorderdirnfce'] = 'DESC';
+				$this->data['leagueorderdirnfcn'] = $_SESSION['leagueOrderDirnfcn'];
+				$this->data['leagueorderdirnfcs'] = $_SESSION['leagueOrderDirnfcs'];
+				$this->data['leagueorderdirnfcw'] = $_SESSION['leagueOrderDirnfcw'];
+				$this->data['leagueorderdirafce'] = $_SESSION['leagueOrderDirafce'];
+				$this->data['leagueorderdirafcn'] = $_SESSION['leagueOrderDirafcn'];
+				$this->data['leagueorderdirafcs'] = $_SESSION['leagueOrderDirafcs'];
+				$this->data['leagueorderdirafcw'] = $_SESSION['leagueOrderDirafcw'];
+				$this->session->set_userdata('leagueOrderDirnfce', 'DESC');
+			} else if ($orderdiv == 'NFCN') {
+				$this->data['leagueorderdirnfcn'] = 'DESC';
+				$this->data['leagueorderdirnfce'] = $_SESSION['leagueOrderDirnfce'];
+				$this->data['leagueorderdirnfcs'] = $_SESSION['leagueOrderDirnfcs'];
+				$this->data['leagueorderdirnfcw'] = $_SESSION['leagueOrderDirnfcw'];
+				$this->data['leagueorderdirafce'] = $_SESSION['leagueOrderDirafce'];
+				$this->data['leagueorderdirafcn'] = $_SESSION['leagueOrderDirafcn'];
+				$this->data['leagueorderdirafcs'] = $_SESSION['leagueOrderDirafcs'];
+				$this->data['leagueorderdirafcw'] = $_SESSION['leagueOrderDirafcw'];
+				$this->session->set_userdata('leagueOrderDirnfcn', 'DESC');
+			} else if ($orderdiv == 'NFCS') {
+				$this->data['leagueorderdirnfcs'] = 'DESC';
+				$this->data['leagueorderdirnfcn'] = $_SESSION['leagueOrderDirnfcn'];
+				$this->data['leagueorderdirnfce'] = $_SESSION['leagueOrderDirnfce'];
+				$this->data['leagueorderdirnfcw'] = $_SESSION['leagueOrderDirnfcw'];
+				$this->data['leagueorderdirafce'] = $_SESSION['leagueOrderDirafce'];
+				$this->data['leagueorderdirafcn'] = $_SESSION['leagueOrderDirafcn'];
+				$this->data['leagueorderdirafcs'] = $_SESSION['leagueOrderDirafcs'];
+				$this->data['leagueorderdirafcw'] = $_SESSION['leagueOrderDirafcw'];
+				$this->session->set_userdata('leagueOrderDirnfcs', 'DESC');
+			} else if ($orderdiv == 'NFCW') {
+				$this->data['leagueorderdirnfcw'] = 'DESC';
+				$this->data['leagueorderdirnfcn'] = $_SESSION['leagueOrderDirnfcn'];
+				$this->data['leagueorderdirnfcs'] = $_SESSION['leagueOrderDirnfcs'];
+				$this->data['leagueorderdirnfce'] = $_SESSION['leagueOrderDirnfce'];
+				$this->data['leagueorderdirafce'] = $_SESSION['leagueOrderDirafce'];
+				$this->data['leagueorderdirafcn'] = $_SESSION['leagueOrderDirafcn'];
+				$this->data['leagueorderdirafcs'] = $_SESSION['leagueOrderDirafcs'];
+				$this->data['leagueorderdirafcw'] = $_SESSION['leagueOrderDirafcw'];
+				$this->session->set_userdata('leagueOrderDirnfcw', 'DESC');
+			} else if ($orderdiv == 'AFC') {
+				$this->data['leagueorderdirafc'] = 'DESC';
+				$this->data['leagueorderdirnfc'] = $_SESSION['leagueOrderDirnfc'];
+				$this->session->set_userdata('leagueOrderDirafc', 'DESC');
+			} else if ($orderdiv == 'NFC') {
+				$this->data['leagueorderdirnfc'] = 'DESC';
+				$this->data['leagueorderdirafc'] = $_SESSION['leagueOrderDirafc'];
+				$this->session->set_userdata('leagueOrderDirnfc', 'DESC');
+			} else {
+				$this->data['leagueorderdir'] = 'DESC';
+			}
+			
 			$this->session->set_userdata('leagueOrderDir', 'DESC');
 		} else if ($orderdir == 'DESC') {
-			$this->data['leagueorderdir'] = 'ASC';
+			if($orderdiv == 'AFCE') {
+				$this->data['leagueorderdirafce'] = 'ASC';
+				$this->data['leagueorderdirafcn'] = $_SESSION['leagueOrderDirafcn'];
+				$this->data['leagueorderdirafcs'] = $_SESSION['leagueOrderDirafcs'];
+				$this->data['leagueorderdirafcw'] = $_SESSION['leagueOrderDirafcw'];
+				$this->data['leagueorderdirnfce'] = $_SESSION['leagueOrderDirnfce'];
+				$this->data['leagueorderdirnfcn'] = $_SESSION['leagueOrderDirnfcn'];
+				$this->data['leagueorderdirnfcs'] = $_SESSION['leagueOrderDirnfcs'];
+				$this->data['leagueorderdirnfcw'] = $_SESSION['leagueOrderDirnfcw'];
+				$this->session->set_userdata('leagueOrderDirafce', 'ASC');
+			} else if ($orderdiv == 'AFCN') {
+				$this->data['leagueorderdirafcn'] = 'ASC';
+				$this->data['leagueorderdirafce'] = $_SESSION['leagueOrderDirafce'];
+				$this->data['leagueorderdirafcs'] = $_SESSION['leagueOrderDirafcs'];
+				$this->data['leagueorderdirafcw'] = $_SESSION['leagueOrderDirafcw'];
+				$this->data['leagueorderdirnfce'] = $_SESSION['leagueOrderDirnfce'];
+				$this->data['leagueorderdirnfcn'] = $_SESSION['leagueOrderDirnfcn'];
+				$this->data['leagueorderdirnfcs'] = $_SESSION['leagueOrderDirnfcs'];
+				$this->data['leagueorderdirnfcw'] = $_SESSION['leagueOrderDirnfcw'];
+				$this->session->set_userdata('leagueOrderDirafcn', 'ASC');
+			} else if ($orderdiv == 'AFCS') {
+				$this->data['leagueorderdirafcs'] = 'ASC';
+				$this->data['leagueorderdirafcn'] = $_SESSION['leagueOrderDirafcn'];
+				$this->data['leagueorderdirafce'] = $_SESSION['leagueOrderDirafce'];
+				$this->data['leagueorderdirafcw'] = $_SESSION['leagueOrderDirafcw'];
+				$this->data['leagueorderdirnfce'] = $_SESSION['leagueOrderDirnfce'];
+				$this->data['leagueorderdirnfcn'] = $_SESSION['leagueOrderDirnfcn'];
+				$this->data['leagueorderdirnfcs'] = $_SESSION['leagueOrderDirnfcs'];
+				$this->data['leagueorderdirnfcw'] = $_SESSION['leagueOrderDirnfcw'];
+				$this->session->set_userdata('leagueOrderDirafcs', 'ASC');
+			} else if ($orderdiv == 'AFCW') {
+				$this->data['leagueorderdirafce'] = 'ASC';
+				$this->data['leagueorderdirafcn'] = $_SESSION['leagueOrderDirafcn'];
+				$this->data['leagueorderdirafcs'] = $_SESSION['leagueOrderDirafcs'];
+				$this->data['leagueorderdirafcw'] = $_SESSION['leagueOrderDirafcw'];
+				$this->data['leagueorderdirnfce'] = $_SESSION['leagueOrderDirnfce'];
+				$this->data['leagueorderdirnfcn'] = $_SESSION['leagueOrderDirnfcn'];
+				$this->data['leagueorderdirnfcs'] = $_SESSION['leagueOrderDirnfcs'];
+				$this->data['leagueorderdirnfcw'] = $_SESSION['leagueOrderDirnfcw'];
+				$this->session->set_userdata('leagueOrderDirafcw', 'ASC');
+			} else if ($orderdiv == 'NFCE') {
+				$this->data['leagueorderdirnfce'] = 'ASC';
+				$this->data['leagueorderdirnfcn'] = $_SESSION['leagueOrderDirnfcn'];
+				$this->data['leagueorderdirnfcs'] = $_SESSION['leagueOrderDirnfcs'];
+				$this->data['leagueorderdirnfcw'] = $_SESSION['leagueOrderDirnfcw'];
+				$this->data['leagueorderdirafce'] = $_SESSION['leagueOrderDirafce'];
+				$this->data['leagueorderdirafcn'] = $_SESSION['leagueOrderDirafcn'];
+				$this->data['leagueorderdirafcs'] = $_SESSION['leagueOrderDirafcs'];
+				$this->data['leagueorderdirafcw'] = $_SESSION['leagueOrderDirafcw'];
+				$this->session->set_userdata('leagueOrderDirnfce', 'ASC');
+			} else if ($orderdiv == 'NFCN') {
+				$this->data['leagueorderdirnfcn'] = 'ASC';
+				$this->data['leagueorderdirnfce'] = $_SESSION['leagueOrderDirnfce'];
+				$this->data['leagueorderdirnfcs'] = $_SESSION['leagueOrderDirnfcs'];
+				$this->data['leagueorderdirnfcw'] = $_SESSION['leagueOrderDirnfcw'];
+				$this->data['leagueorderdirafce'] = $_SESSION['leagueOrderDirafce'];
+				$this->data['leagueorderdirafcn'] = $_SESSION['leagueOrderDirafcn'];
+				$this->data['leagueorderdirafcs'] = $_SESSION['leagueOrderDirafcs'];
+				$this->data['leagueorderdirafcw'] = $_SESSION['leagueOrderDirafcw'];
+				$this->session->set_userdata('leagueOrderDirnfcn', 'ASC');
+			} else if ($orderdiv == 'NFCS') {
+				$this->data['leagueorderdirnfcs'] = 'ASC';
+				$this->data['leagueorderdirnfcn'] = $_SESSION['leagueOrderDirnfcn'];
+				$this->data['leagueorderdirnfce'] = $_SESSION['leagueOrderDirnfce'];
+				$this->data['leagueorderdirnfcw'] = $_SESSION['leagueOrderDirnfcw'];
+				$this->data['leagueorderdirafce'] = $_SESSION['leagueOrderDirafce'];
+				$this->data['leagueorderdirafcn'] = $_SESSION['leagueOrderDirafcn'];
+				$this->data['leagueorderdirafcs'] = $_SESSION['leagueOrderDirafcs'];
+				$this->data['leagueorderdirafcw'] = $_SESSION['leagueOrderDirafcw'];
+				$this->session->set_userdata('leagueOrderDirnfcs', 'ASC');
+			} else if ($orderdiv == 'NFCW') {
+				$this->data['leagueorderdirnfcw'] = 'ASC';
+				$this->data['leagueorderdirnfcn'] = $_SESSION['leagueOrderDirnfcn'];
+				$this->data['leagueorderdirnfcs'] = $_SESSION['leagueOrderDirnfcs'];
+				$this->data['leagueorderdirnfce'] = $_SESSION['leagueOrderDirnfce'];
+				$this->data['leagueorderdirafce'] = $_SESSION['leagueOrderDirafce'];
+				$this->data['leagueorderdirafcn'] = $_SESSION['leagueOrderDirafcn'];
+				$this->data['leagueorderdirafcs'] = $_SESSION['leagueOrderDirafcs'];
+				$this->data['leagueorderdirafcw'] = $_SESSION['leagueOrderDirafcw'];
+				$this->session->set_userdata('leagueOrderDirnfcw', 'ASC');
+			} else if ($orderdiv == 'AFC') {
+				$this->data['leagueorderdirafc'] = 'ASC';
+				$this->data['leagueorderdirnfc'] = $_SESSION['leagueOrderDirnfc'];
+				$this->session->set_userdata('leagueOrderDirafc', 'ASC');
+			} else if ($orderdiv == 'NFC') {
+				$this->data['leagueorderdirnfc'] = 'ASC';
+				$this->data['leagueorderdirafc'] = $_SESSION['leagueOrderDirafc'];
+				$this->session->set_userdata('leagueOrderDirnfc', 'ASC');
+			} else {
+				$this->data['leagueorderdir'] = 'ASC';
+			}
+			
 			$this->session->set_userdata('leagueOrderDir', 'ASC');
 		}
 		
@@ -103,6 +295,16 @@ class League extends Application {
 			$this->session->set_userdata('leagueOrderBy', 'Conf');
 		} else if ($orderCol == 'Division') {
 			$this->session->set_userdata('leagueOrderBy', 'Division');
+		} else if ($orderCol == 'PF') {
+			$this->session->set_userdata('leagueOrderBy', 'PF');
+		} else if ($orderCol == 'PA') {
+			$this->session->set_userdata('leagueOrderBy', 'PA');
+		} else if ($orderCol == 'NetPts') {
+			$this->session->set_userdata('leagueOrderBy', 'NetPts');
+		} else if ($orderCol == 'Home') {
+			$this->session->set_userdata('leagueOrderBy', 'Home');
+		} else if ($orderCol == 'Road') {
+			$this->session->set_userdata('leagueOrderBy', 'Road');
 		}
 		
 		// If ordering has been specified
@@ -149,10 +351,40 @@ class League extends Application {
 	public function orderTable() {
 		if (!isset($_SESSION['leagueOrderDir'])) {
 			$this->data['leagueorderdir'] = 'ASC';
+			$this->data['leagueorderdirafce'] = 'ASC';
+			$this->data['leagueorderdirafcn'] = 'ASC';
+			$this->data['leagueorderdirafcs'] = 'ASC';
+			$this->data['leagueorderdirafcw'] = 'ASC';
+			$this->data['leagueorderdirnfce'] = 'ASC';
+			$this->data['leagueorderdirnfcn'] = 'ASC';
+			$this->data['leagueorderdirnfcs'] = 'ASC';
+			$this->data['leagueorderdirnfcw'] = 'ASC';
+			$this->data['leagueorderdirafc'] = 'ASC';
+			$this->data['leagueorderdirnfc'] = 'ASC';
 		} else if ($_SESSION['leagueOrderDir'] == 'ASC') {
 			$this->data['leagueorderdir'] = 'ASC';
+			$this->data['leagueorderdirafce'] = 'ASC';
+			$this->data['leagueorderdirafcn'] = 'ASC';
+			$this->data['leagueorderdirafcs'] = 'ASC';
+			$this->data['leagueorderdirafcw'] = 'ASC';
+			$this->data['leagueorderdirnfce'] = 'ASC';
+			$this->data['leagueorderdirnfcn'] = 'ASC';
+			$this->data['leagueorderdirnfcs'] = 'ASC';
+			$this->data['leagueorderdirnfcw'] = 'ASC';
+			$this->data['leagueorderdirafc'] = 'ASC';
+			$this->data['leagueorderdirnfc'] = 'ASC';
 		} else if ($_SESSION['leagueOrderDir'] == 'DESC') {
 			$this->data['leagueorderdir'] = 'DESC';
+			$this->data['leagueorderdirafce'] = 'DESC';
+			$this->data['leagueorderdirafcn'] = 'DESC';
+			$this->data['leagueorderdirafcs'] = 'DESC';
+			$this->data['leagueorderdirafcw'] = 'DESC';
+			$this->data['leagueorderdirnfce'] = 'DESC';
+			$this->data['leagueorderdirnfcn'] = 'DESC';
+			$this->data['leagueorderdirnfcs'] = 'DESC';
+			$this->data['leagueorderdirnfcw'] = 'DESC';
+			$this->data['leagueorderdirafc'] = 'DESC';
+			$this->data['leagueorderdirnfc'] = 'DESC';
 		}
 		
 		if(isset($_SESSION['leagueOrderBy']) && isset($_SESSION['leagueOrderDir'])) {
