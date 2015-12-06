@@ -5,7 +5,7 @@
  * @author Leon
  *
  */
-
+define("STANDINGS_TABLE", "leagues");
 class Standings extends MY_Model {
 	// Constructor
 	public function __construct(){
@@ -26,8 +26,6 @@ class Standings extends MY_Model {
 			//echo '</pre>';
 			$this->xmlResult = $this->xmlrpc->display_response();
 		}
-
-		$this->updateDatabase();
 	}
 	 
 	public function updateDatabase() {
@@ -45,12 +43,22 @@ class Standings extends MY_Model {
 			}
 		}
 		$standings = $this->buildTeamStandings($scores);
-		foreach($standings as $teamName => $standing) {
-			echo $teamName;
-			echo '<pre>';
-			echo var_dump($standing);
-			echo '</pre>';
+		// foreach($standings as $teamName => $standing) {
+		// 	echo $teamName;
+		// 	echo '<pre>';
+		// 	echo var_dump($standing);
+		// 	echo '</pre>';
+		// }
+		foreach($standings as $standing) {
+			if (is_object($standing)) {
+            $data = get_object_vars($standing);
+	        } else {
+	            $data = $standing;
+	        }
+	        $this->db->where("teamCode", $data["teamCode"]);
+	        $this->db->update(STANDINGS_TABLE, $data);	
 		}
+		
 
 	}
 	private function objectMapping($score) {
@@ -61,36 +69,82 @@ class Standings extends MY_Model {
 		$record->awayTeam = $score["away"];
 		$record->date =  (new DateTime($score["date"]))->format('Y-m-d H:i:s');
 		$record->homeScore = $scoreArray[0];
-		$record->teamScore = $scoreArray[1];
+		$record->awayScore = $scoreArray[1];
 		return $record;
 	}
 	private function buildTeamStandings($scores) {
 		$standings = array();
 		foreach($scores as $score) {
-			$winner = $score->homeScore > $score->teamScore ? $score->homeTeam : $score->awayTeam;
-			$loser  = $score->homeScore < $score->teamScore ? $score->homeTeam : $score->awayTeam;
-			echo "$winner : $loser" ;
+			$winner = $score->homeScore < $score->awayScore ? $score->homeTeam : $score->awayTeam;
+			$loser  = $score->homeScore > $score->awayScore ? $score->homeTeam : $score->awayTeam;
 			if(!isset($standings[$score->homeTeam])) {
 				$standings[$score->homeTeam] = array(
+						"teamCode" => $score->homeTeam,
 						"win" => 0,
 						"loss" => 0,
-						"tie" => 0
+						"tie" => 0,
+						"PF" => 0,
+						"PA" => 0,
+						"HomeWins" => 0,
+						"HomeLosses" =>0,
+						"AwayWins" => 0,
+						"AwayLosses" => 0
 					);
 			}
 			if(!isset($standings[$score->awayTeam])) {
 				$standings[$score->awayTeam] = array(
+						"teamCode" => $score->awayTeam,
 						"win" => 0,
 						"loss" => 0,
-						"tie" => 0
+						"tie" => 0,
+						"PF" => 0,
+						"PA" => 0,
+						"HomeWins" => 0,
+						"HomeLosses" =>0,
+						"AwayWins" => 0,
+						"AwayLosses" => 0
 					);
 			}
-			if($score->teamScore == $score->awayTeam) {
+			if($score->awayScore == $score->awayTeam) {
 				$standings[$score->teamTeam]['tie']++;
 				$standings[$score->homeTeam]['tie']++;
 			} else {
 				$standings[$winner]["win"]++;
 				$standings[$loser]["loss"]++;
 			}
+			$standings[$score->homeTeam]["PF"] += $score->awayScore; 
+			$standings[$score->homeTeam]["PA"] += $score->homeScore;
+			$standings[$score->awayTeam]["PF"] += $score->homeScore;
+			$standings[$score->awayTeam]["PA"] += $score->awayScore;
+			if($winner == $score->homeTeam) {
+				$standings[$score->homeTeam]["HomeWins"]++;
+			} else {
+				$standings[$score->homeTeam]["HomeLosses"]++;
+			}
+			if($winner == $score->awayTeam) {
+				$standings[$score->awayTeam]["AwayWins"]++;
+			} else {
+				$standings[$score->awayTeam]["AwayLosses"]++;
+			}
+		}
+		$standings = $this->remapBreakDown($standings);
+		$standings = $this->calcNetPts($standings);
+		return $standings;
+	}
+	private function remapBreakDown($standings) {
+		foreach($standings as $key => $val) {
+			$standings[$key]["Home"] = $standings[$key]['HomeWins'] . ' - ' . $standings[$key]['HomeLosses'];
+			$standings[$key]["Road"] = $standings[$key]['AwayWins'] . ' - ' . $standings[$key]['AwayLosses'];
+			unset($standings[$key]['HomeWins']);
+			unset($standings[$key]['HomeLosses']);
+			unset($standings[$key]['AwayWins']);
+			unset($standings[$key]['AwayLosses']);
+		}
+		return $standings;
+	}
+	private function calcNetPts($standings) {
+		foreach ($standings as $key => $value) {
+			$standings[$key]["NetPts"] = abs($value["PF"] - $value["PA"]);
 		}
 		return $standings;
 	}

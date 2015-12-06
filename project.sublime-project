@@ -1,0 +1,13 @@
+{
+	"folders":
+	[
+		{
+			"path": "c:\\xampp\\htdocs\\Comp4711"
+		}
+	],
+    "settings": {
+        "xdebug": {
+             "url": "http://assign1.local/",
+        }
+    }
+}
