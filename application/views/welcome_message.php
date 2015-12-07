@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       dataString = $("#predictionform").serialize();
       $.ajax({
         type: "POST",
-        url: "<?php echo base_url(); ?>/Welcome/Prediction",
+        url: "/Welcome/Prediction",
         cache: false,
         data: dataString,
         success: function(data){         
