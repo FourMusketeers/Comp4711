@@ -4,20 +4,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <script>
   $(function(){
-    $("predictionform").submit(function(){
-      //e.preventDefault();
-      dataString = $("predictionform").serialize();
-      team = $('dropdownfield :selected').val();
-      alert(team);
+    $("#predictionform").submit(function(){
+      dataString = $("#predictionform").serialize();
       $.ajax({
         type: "POST",
         url: "<?php echo base_url(); ?>/Welcome/Prediction",
+        cache: false,
         data: dataString,
-
-        success: function(data){
-          alert('Successful!');
+        success: function(data){         
+          alert(data);
+          $("#predictionresults").html(JSON.parse(data));
         }
       });
+      
       // Stops form post.
       return false;
     });
@@ -42,12 +41,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <form id="predictionform" class="ui fluid form" method="post" enctype="multipart/form-data">
     <select id="dropdownfield" name="teamdropdown">
     {dropdown}
-      <option value={teamcode}>{teamname}</option>
+      <option value={teamCode}>{teamName}</option>
     {/dropdown}
     </select>
     <input type="submit">
   </form>
-  <div id="predictionresults"/>
+  <div id="predictionresults">
+  </div>
 </div>
 
 <div class="ui container stripe segment">

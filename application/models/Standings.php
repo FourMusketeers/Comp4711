@@ -27,6 +27,111 @@ class Standings extends MY_Model {
 			$this->xmlResult = $this->xmlrpc->display_response();
 		}
 	}
+
+	public function getTotalAverage($teamCode)
+	{
+		$array = 0;
+		$query = $this->db->query("SELECT homeScore as score FROM score WHERE homeTeam LIKE ?", $teamCode);
+        foreach($query->result() as $row)
+            $options[] = (array)$row;
+
+		$query = $this->db->query("SELECT awayScore as score FROM score WHERE awayTeam LIKE ?", $teamCode);
+        foreach($query->result() as $row)
+            $options[] = (array)$row;
+
+        foreach($options as $option)
+        	$array += (int)(array_values((array)$option)[0]);
+
+
+        $average = $array/count($options);
+		return $average;
+	}
+
+
+	public function getAverageOfLastFiveGames($teamCode)
+	{
+		$array = 0;
+		$average = 0;
+		$options = null;
+		$query = $this->db->query("SELECT date, homeScore as score FROM score WHERE homeTeam LIKE ?", $teamCode);
+        foreach($query->result() as $row)
+            $options[] = (array)$row;
+
+		$query = $this->db->query("SELECT date, awayScore as score FROM score WHERE awayTeam LIKE ?", $teamCode);
+        foreach($query->result() as $row)
+            $options[] = (array)$row;
+
+		function cmp(array $a, array $b)
+		{
+			if($a['date'] < $b['date'])
+				return 1;
+			else if($a['date'] > $b['date'])
+				return -1;
+			else 
+				return 0;
+		}
+
+		if($options != null)
+		{
+	        usort($options, "cmp");
+			$num = (count($options) >= 5 ? 5 : count($options));
+			$i = $num;
+			
+			foreach($options as $option)
+	        {
+	        	if($i == 0)
+	        		break;
+	        	$array += (int)(array_values((array)$option)[1]);
+	        	$i--;
+       		}
+
+       		$average = $array/$num;
+       	}
+		return $average;
+	}
+
+
+	public function getAverageOfLastFiveGamesWithOpp($teamCode, $oppCode)
+	{
+		$array = 0;
+		$average = 0;
+		$options = null;
+		$query = $this->db->query("SELECT date, homeScore as score FROM score WHERE homeTeam LIKE ? AND awayTeam LIKE ?", array($teamCode, $oppCode) );
+        foreach($query->result() as $row)
+            $options[] = (array)$row;
+
+		$query = $this->db->query("SELECT date, awayScore as score FROM score WHERE homeTeam LIKE ? AND awayTeam LIKE ?", array($oppCode, $teamCode) );
+        foreach($query->result() as $row)
+            $options[] = (array)$row;
+
+		function cmp(array $a, array $b)
+		{
+			if($a['date'] < $b['date'])
+				return 1;
+			else if($a['date'] > $b['date'])
+				return -1;
+			else 
+				return 0;
+		}
+
+		if($options != null)
+		{
+	        usort($options, "cmp");
+			$num = (count($options) >= 5 ? 5 : count($options));
+			$i = $num;
+			
+			foreach($options as $option)
+	        {
+	        	if($i == 0)
+	        		break;
+	        	$array += (int)(array_values((array)$option)[1]);
+	        	$i--;
+	       	}
+
+	       	$average = $array/$num;
+        }	
+		return $average;
+	}
 	 
 	public function updateDatabase() {
 		//Update the scores table

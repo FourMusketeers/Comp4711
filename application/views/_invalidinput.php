@@ -1,0 +1,1 @@
+{teamCode} is not a valid team.
