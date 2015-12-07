@@ -232,6 +232,20 @@ class MY_Model extends CI_Model implements Active_Record {
     function order_by($colNam, $dir = "ASC"){
         $this->db->order_by($colNam, $dir);
     }
+	
+	function getConference($key) {
+		$this->db->order_by($this->_keyField, 'asc');
+		$this->db->where('conference', $key);
+		$query = $this->db->get($this->_tableName);
+		return $query->result();
+	}
+	
+	function getDivision($key) {
+		$this->db->order_by($this->_keyField, 'asc');
+		$this->db->where('divisionName', $key);
+		$query = $this->db->get($this->_tableName);
+		return $query->result();
+	}
 //---------------------------------------------------------------------------
 //  Aggregate methods
 //---------------------------------------------------------------------------
