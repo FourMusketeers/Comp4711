@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Welcome extends Application {
 
 	function __construct() {
-		parent::__construct();
+		parent::__Construct();
 		$this->data['pagebody'] = 'welcome_message'; //Load the view
 		$this->load->model('Roster'); //Load the model
 		$this->load->model('Standings'); //Load the model
@@ -40,6 +40,11 @@ class Welcome extends Application {
 		
 	}
 
+	public function getPrediction($overallAvg, $last5GamesAvg, $last5OppGamesAvg)
+	{
+		return Round( (.7 * $overallAvg) + (.2 * $last5GamesAvg) + (.1 * $last5OppGamesAvg) );
+	}
+
 	public function prediction()
 	{
 		$team = "";
@@ -64,26 +69,26 @@ class Welcome extends Application {
 
 		if($codeFound)
 		{
-			$totalAverage = 0;//$this->Standings->getTotalAverage('NE');
+			$totalAverage = $this->Standings->getTotalAverage('NE');
 			$last5Avg = $this->Standings->getAverageOfLastFiveGames('NE');
-			$last5OppAvg = 0;//$this->Standings->getAverageOfLastFiveGamesWithOpp('NE', $team);
+			$last5OppAvg = $this->Standings->getAverageOfLastFiveGamesWithOpp('NE', $team);
 			$oppTotalAverage = $this->Standings->getTotalAverage($team);
-			$oppLast5Avg = 0;//$this->Standings->getAverageOfLastFiveGames('NE');
+			$oppLast5Avg = $this->Standings->getAverageOfLastFiveGames($team);
 			$oppLast5OppAvg = $this->Standings->getAverageOfLastFiveGamesWithOpp($team, 'NE');
 
 			$NE = $this->db->query("SELECT TeamName FROM leagues WHERE teamCode LIKE 'NE'")->result();
 			$data["yourTeamName"] = array_values((array)(array_values((array)$NE)[0]))[0];
-			$data["yourOverallAvg"] = $totalAverage;
+			$data["yourOverallAvg"] = round($totalAverage, 2);
 			$data["yourLast5Avg"] = $last5Avg;
 			$data["yourLast5OppAvg"] = $last5OppAvg;
 
 			$OPP = $this->db->query("SELECT TeamName FROM leagues WHERE teamCode LIKE ?", $team)->result();
 			$data["oppTeamName"] = array_values((array)(array_values((array)$OPP)[0]))[0];
-			$data["oppOverallAvg"] = $oppTotalAverage;
+			$data["oppOverallAvg"] = round($oppTotalAverage, 2);
 			$data["oppLast5Avg"] = $oppLast5Avg;
 			$data["oppLast5OppAvg"] = $oppLast5OppAvg; 
 
-			$data["prediction"] = 0;
+			$data["prediction"] = $this->getPrediction($totalAverage, $last5Avg, $last5OppAvg);
 
     		$result = $this->parser->parse('_prediction', $data, TRUE);
 		} else {
@@ -92,11 +97,5 @@ class Welcome extends Application {
 		}
 
 		echo json_encode($result);
-	}
-
-
-	public function getPrediction($overallAvg, $last5GamesAvg, $last5OppGamesAvg)
-	{
-		return Round( 100 * ( (.7 * $overallAvg) + (.2 * $last5GamesAvg) + (.1 * $last5OppGamesAvg) ) );
 	}
 }

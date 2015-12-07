@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         cache: false,
         data: dataString,
         success: function(data){         
-          alert(data);
+          //alert(data);
           $("#predictionresults").html(JSON.parse(data));
         }
       });

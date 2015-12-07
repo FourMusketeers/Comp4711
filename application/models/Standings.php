@@ -28,6 +28,22 @@ class Standings extends MY_Model {
 		}
 	}
 
+	public function getAllGames($teamCode)
+	{
+		$query = $this->db->query("SELECT date, homeScore as score, awayTeam as oppTeam FROM score WHERE homeTeam LIKE ?", $teamCode);
+        foreach($query->result() as $row)
+            $options[] = (array)$row;
+
+		$query = $this->db->query("SELECT date, awayScore as score, homeTeam as oppTeam FROM score WHERE awayTeam LIKE ?", $teamCode);
+        foreach($query->result() as $row)
+            $options[] = (array)$row;
+
+        foreach($options as $option)
+        	$array = array_values((array)$option);
+
+        return $array;
+	}
+
 	public function getTotalAverage($teamCode)
 	{
 		$array = 0;
@@ -47,6 +63,15 @@ class Standings extends MY_Model {
 		return $average;
 	}
 
+	private static function cmp(array $a, array $b)
+	{
+		if($a['date'] < $b['date'])
+			return 1;
+		else if($a['date'] > $b['date'])
+			return -1;
+		else 
+			return 0;
+	}
 
 	public function getAverageOfLastFiveGames($teamCode)
 	{
@@ -61,19 +86,9 @@ class Standings extends MY_Model {
         foreach($query->result() as $row)
             $options[] = (array)$row;
 
-		function cmp(array $a, array $b)
-		{
-			if($a['date'] < $b['date'])
-				return 1;
-			else if($a['date'] > $b['date'])
-				return -1;
-			else 
-				return 0;
-		}
-
 		if($options != null)
 		{
-	        usort($options, "cmp");
+	        usort($options, array("Standings", "cmp"));
 			$num = (count($options) >= 5 ? 5 : count($options));
 			$i = $num;
 			
@@ -104,19 +119,9 @@ class Standings extends MY_Model {
         foreach($query->result() as $row)
             $options[] = (array)$row;
 
-		function cmp(array $a, array $b)
-		{
-			if($a['date'] < $b['date'])
-				return 1;
-			else if($a['date'] > $b['date'])
-				return -1;
-			else 
-				return 0;
-		}
-
 		if($options != null)
 		{
-	        usort($options, "cmp");
+	        usort($options, array("Standings", "cmp"));
 			$num = (count($options) >= 5 ? 5 : count($options));
 			$i = $num;
 			
