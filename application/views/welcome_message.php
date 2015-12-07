@@ -36,6 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 
 <div id="predictionsection">
+</br>
   <h1 class="ui header">Prediction Calculator</h1>
   <h2>Please select a team.</h2>
   <form id="predictionform" class="ui fluid form" method="post" enctype="multipart/form-data">
@@ -46,6 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </select>
     <input type="submit">
   </form>
+  </br>
   <div id="predictionresults">
   </div>
 </div>
