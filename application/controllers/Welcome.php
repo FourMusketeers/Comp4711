@@ -67,8 +67,10 @@ class Welcome extends Application {
 	    		break;
 			}
 
+		// If the team code existsyea
 		if($codeFound)
 		{
+			// Get averages
 			$totalAverage = $this->Standings->getTotalAverage('NE');
 			$last5Avg = $this->Standings->getAverageOfLastFiveGames('NE');
 			$last5OppAvg = $this->Standings->getAverageOfLastFiveGamesWithOpp('NE', $team);

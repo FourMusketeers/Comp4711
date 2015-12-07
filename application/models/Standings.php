@@ -28,22 +28,7 @@ class Standings extends MY_Model {
 		}
 	}
 
-	public function getAllGames($teamCode)
-	{
-		$query = $this->db->query("SELECT date, homeScore as score, awayTeam as oppTeam FROM score WHERE homeTeam LIKE ?", $teamCode);
-        foreach($query->result() as $row)
-            $options[] = (array)$row;
-
-		$query = $this->db->query("SELECT date, awayScore as score, homeTeam as oppTeam FROM score WHERE awayTeam LIKE ?", $teamCode);
-        foreach($query->result() as $row)
-            $options[] = (array)$row;
-
-        foreach($options as $option)
-        	$array = array_values((array)$option);
-
-        return $array;
-	}
-
+	// Get total average out of all games for given team.
 	public function getTotalAverage($teamCode)
 	{
 		$array = 0;
@@ -63,6 +48,7 @@ class Standings extends MY_Model {
 		return $average;
 	}
 
+	// Compare date function.
 	private static function cmp(array $a, array $b)
 	{
 		if($a['date'] < $b['date'])
@@ -73,6 +59,7 @@ class Standings extends MY_Model {
 			return 0;
 	}
 
+	// Get the average score of the last five games.
 	public function getAverageOfLastFiveGames($teamCode)
 	{
 		$array = 0;
@@ -105,7 +92,7 @@ class Standings extends MY_Model {
 		return $average;
 	}
 
-
+	// Get the average of the last 5 games against a opponent.
 	public function getAverageOfLastFiveGamesWithOpp($teamCode, $oppCode)
 	{
 		$array = 0;
